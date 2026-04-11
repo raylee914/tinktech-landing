@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – DuckMath</title>
+  <meta name="description" content="Learn about DuckMath — an AI-powered math practice platform built by Malaysian educators for Malaysian students." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'] } } }
+    }
+  </script>
+</head>
+<body class="font-sans text-gray-800 bg-white">
+
+<!-- Nav -->
+<nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="../index.html" class="flex items-center gap-2 font-bold text-xl text-blue-800">
+      <span class="text-2xl">🦆</span> DuckMath
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+      <a href="../index.html#features" class="hover:text-blue-600 transition-colors">Features</a>
+      <a href="blog/index.html" class="hover:text-blue-600 transition-colors">Blog</a>
+      <a href="about.html" class="text-blue-600 font-semibold">About</a>
+    </div>
+    <a href="https://uecstudent.streamlit.app" target="_blank"
+       class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors">
+      Start Practising →
+    </a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="bg-gradient-to-br from-blue-800 to-blue-600 text-white py-20 px-4 text-center">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-6xl mb-6">🦆</div>
+    <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">About DuckMath</h1>
+    <p class="text-blue-100 text-lg">We believe every Malaysian student deserves access to great math practice — for free.</p>
+  </div>
+</section>
+
+<!-- Mission -->
+<section class="py-16 px-4">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Our Mission</h2>
+    <p class="text-gray-600 text-lg leading-relaxed mb-4">
+      DuckMath was founded on a simple belief: the biggest barrier to good exam results in Malaysia isn't intelligence — it's access to quality practice and timely feedback.
+    </p>
+    <p class="text-gray-600 text-lg leading-relaxed mb-4">
+      Private tuition costs hundreds of ringgit per month. Textbook answer keys tell you what the right answer is, but not <em>why</em> yours was wrong. DuckMath changes that.
+    </p>
+    <p class="text-gray-600 text-lg leading-relaxed">
+      By combining a structured question bank with AI-powered grading, we give every student — regardless of family income — instant, personalised feedback on every answer they submit. The duck mascot and level-up system make the process genuinely fun.
+    </p>
+  </div>
+</section>
+
+<!-- Story -->
+<section class="py-16 px-4 bg-gray-50">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Our Story</h2>
+    <p class="text-gray-600 text-lg leading-relaxed mb-4">
+      DuckMath was built by <strong>TinkTech</strong>, a small education-technology team based in Malaysia. The idea was born from years of watching students struggle not because they lacked effort, but because the feedback loop between "I tried this" and "here's what you did wrong" took days — by which time the lesson was long forgotten.
+    </p>
+    <p class="text-gray-600 text-lg leading-relaxed mb-4">
+      We started with a simple Streamlit prototype, a Supabase database, and a lot of coffee. Within weeks, students were asking their teachers to add more questions. The duck levels came next — because learning is more fun when there's a ridiculous goal to chase.
+    </p>
+    <p class="text-gray-600 text-lg leading-relaxed">
+      Today DuckMath supports SPM and UEC mathematics syllabuses, with questions submitted and verified by experienced Malaysian math teachers.
+    </p>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="py-16 px-4">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12">What We Stand For</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="text-5xl mb-4">🎯</div>
+        <h3 class="font-bold text-lg text-gray-900 mb-2">Accuracy First</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Every question is reviewed by a human teacher before going live. AI grades answers; humans ensure the questions are correct.</p>
+      </div>
+      <div class="text-center">
+        <div class="text-5xl mb-4">🆓</div>
+        <h3 class="font-bold text-lg text-gray-900 mb-2">Free for Students</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Core practice will always be free. We are funded through teacher subscriptions and contextual advertising — never by charging students.</p>
+      </div>
+      <div class="text-center">
+        <div class="text-5xl mb-4">🔒</div>
+        <h3 class="font-bold text-lg text-gray-900 mb-2">Privacy Matters</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">We collect only what we need. Student data is never sold. See our <a href="privacy.html" class="text-blue-600 underline">Privacy Policy</a> for the full picture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="py-16 px-4 bg-blue-50">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Get In Touch</h2>
+    <p class="text-gray-500 text-lg mb-8">Whether you're a teacher who wants to contribute questions, a school that wants to partner, or just a student with feedback — we'd love to hear from you.</p>
+    <div class="inline-flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="mailto:raymond@tinktech.com.my"
+         class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full transition-colors">
+        📧 raymond@tinktech.com.my
+      </a>
+    </div>
+    <p class="text-gray-400 text-sm mt-6">TinkTech Sdn Bhd · Malaysia</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 py-8 px-4 text-center text-sm">
+  <p>© 2025 TinkTech Sdn Bhd. All rights reserved. &nbsp;·&nbsp;
+    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+  </p>
+</footer>
+
+</body>
+</html>
