@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us – DuckMath</title>
-  <meta name="description" content="Learn about DuckMath — an AI-powered math practice platform built by Malaysian educators for Malaysian students." />
+  <title>关于我们 About Us – 鸭鸭数学 DuckMath</title>
+  <meta name="description" content="鸭鸭数学由马来西亚教育科技团队 TinkTech 打造，专为独中统考生提供 AI 数学练习平台。" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
-      theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'] } } }
+      theme: { extend: { fontFamily: { sans: ['Noto Sans SC','Inter','sans-serif'] },
+        colors: { brand: { 600:'#2563eb', 700:'#1d4ed8', 800:'#1e40af' } } } }
     }
   </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    html[lang="en"] .lang-zh { display: none !important; }
+    html[lang="zh"] .lang-en { display: none !important; }
+    .lang-btn-active   { background: #2563eb; color: white; }
+    .lang-btn-inactive { background: transparent; color: #6b7280; }
+  </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8007778449006887" crossorigin="anonymous"></script>
 </head>
 <body class="font-sans text-gray-800 bg-white">
@@ -19,18 +28,30 @@
 <!-- Nav -->
 <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-    <a href="../index.html" class="flex items-center gap-2 font-bold text-xl text-blue-800">
-      <span class="text-2xl">🦆</span> DuckMath
+    <a href="index.html" class="flex items-center gap-2 font-bold text-xl text-blue-800">
+      <span class="text-2xl">🦆</span>
+      <span class="lang-zh">鸭鸭数学</span>
+      <span class="lang-en">DuckMath</span>
     </a>
     <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-      <a href="../index.html#features" class="hover:text-blue-600 transition-colors">Features</a>
-      <a href="blog/index.html" class="hover:text-blue-600 transition-colors">Blog</a>
-      <a href="about.html" class="text-blue-600 font-semibold">About</a>
+      <a href="index.html#features" class="hover:text-blue-600 transition-colors lang-zh">功能</a>
+      <a href="index.html#features" class="hover:text-blue-600 transition-colors lang-en">Features</a>
+      <a href="blog/index.html" class="hover:text-blue-600 transition-colors lang-zh">博客</a>
+      <a href="blog/index.html" class="hover:text-blue-600 transition-colors lang-en">Blog</a>
+      <a href="about.html" class="text-blue-600 font-semibold lang-zh">关于</a>
+      <a href="about.html" class="text-blue-600 font-semibold lang-en">About</a>
     </div>
-    <a href="https://uecstudent.streamlit.app" target="_blank"
-       class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors">
-      Start Practising →
-    </a>
+    <div class="flex items-center gap-3">
+      <div class="flex items-center border border-gray-200 rounded-full overflow-hidden text-xs font-semibold">
+        <button id="btn-zh" onclick="setLang('zh')" class="px-3 py-1.5 lang-btn-active transition-colors">中文</button>
+        <button id="btn-en" onclick="setLang('en')" class="px-3 py-1.5 lang-btn-inactive transition-colors">EN</button>
+      </div>
+      <a href="https://uecstudent.streamlit.app" target="_blank"
+         class="hidden sm:inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors">
+        <span class="lang-zh">开始练习 →</span>
+        <span class="lang-en">Start Practising →</span>
+      </a>
+    </div>
   </div>
 </nav>
 
@@ -38,62 +59,121 @@
 <section class="bg-gradient-to-br from-blue-800 to-blue-600 text-white py-20 px-4 text-center">
   <div class="max-w-3xl mx-auto">
     <div class="text-6xl mb-6">🦆</div>
-    <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">About DuckMath</h1>
-    <p class="text-blue-100 text-lg">We believe every Malaysian student deserves access to great math practice — for free.</p>
+    <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">
+      <span class="lang-zh">关于鸭鸭数学</span>
+      <span class="lang-en">About DuckMath</span>
+    </h1>
+    <p class="text-blue-100 text-lg">
+      <span class="lang-zh">我们相信，每一位马来西亚学生都值得获得优质的数学练习机会——而且是免费的。</span>
+      <span class="lang-en">We believe every Malaysian student deserves access to great math practice — for free.</span>
+    </p>
   </div>
 </section>
 
 <!-- Mission -->
 <section class="py-16 px-4">
   <div class="max-w-3xl mx-auto">
-    <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Our Mission</h2>
-    <p class="text-gray-600 text-lg leading-relaxed mb-4">
-      DuckMath was founded on a simple belief: the biggest barrier to good exam results in Malaysia isn't intelligence — it's access to quality practice and timely feedback.
-    </p>
-    <p class="text-gray-600 text-lg leading-relaxed mb-4">
-      Private tuition costs hundreds of ringgit per month. Textbook answer keys tell you what the right answer is, but not <em>why</em> yours was wrong. DuckMath changes that.
-    </p>
-    <p class="text-gray-600 text-lg leading-relaxed">
-      By combining a structured question bank with AI-powered grading, we give every student — regardless of family income — instant, personalised feedback on every answer they submit. The duck mascot and level-up system make the process genuinely fun.
-    </p>
+    <h2 class="text-3xl font-extrabold text-gray-900 mb-6">
+      <span class="lang-zh">我们的使命</span>
+      <span class="lang-en">Our Mission</span>
+    </h2>
+    <div class="lang-zh">
+      <p class="text-gray-600 text-lg leading-relaxed mb-4">
+        鸭鸭数学建立于一个简单的信念：马来西亚学生成绩不理想，最大的障碍不是天赋——而是缺乏优质的练习资源和及时的反馈。
+      </p>
+      <p class="text-gray-600 text-lg leading-relaxed mb-4">
+        私人补习费用动辄数百令吉一个月。课本答案只告诉你对与错，却不告诉你<em>为什么</em>你的答案是错的。鸭鸭数学要改变这一切。
+      </p>
+      <p class="text-gray-600 text-lg leading-relaxed">
+        通过将结构化题库与 AI 即时批改相结合，无论家庭收入如何，每一位学生都能在提交答案后立即获得个性化的反馈。鸭子吉祥物和升级系统让学习过程真正变得有趣。
+      </p>
+    </div>
+    <div class="lang-en">
+      <p class="text-gray-600 text-lg leading-relaxed mb-4">
+        DuckMath was founded on a simple belief: the biggest barrier to good exam results in Malaysia isn't intelligence — it's access to quality practice and timely feedback.
+      </p>
+      <p class="text-gray-600 text-lg leading-relaxed mb-4">
+        Private tuition costs hundreds of ringgit per month. Textbook answer keys tell you what the right answer is, but not <em>why</em> yours was wrong. DuckMath changes that.
+      </p>
+      <p class="text-gray-600 text-lg leading-relaxed">
+        By combining a structured question bank with AI-powered grading, we give every student — regardless of family income — instant, personalised feedback on every answer they submit. The duck mascot and level-up system make the process genuinely fun.
+      </p>
+    </div>
   </div>
 </section>
 
 <!-- Story -->
 <section class="py-16 px-4 bg-gray-50">
   <div class="max-w-3xl mx-auto">
-    <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Our Story</h2>
-    <p class="text-gray-600 text-lg leading-relaxed mb-4">
-      DuckMath was built by <strong>TinkTech</strong>, a small education-technology team based in Malaysia. The idea was born from years of watching students struggle not because they lacked effort, but because the feedback loop between "I tried this" and "here's what you did wrong" took days — by which time the lesson was long forgotten.
-    </p>
-    <p class="text-gray-600 text-lg leading-relaxed mb-4">
-      We started with a simple Streamlit prototype, a Supabase database, and a lot of coffee. Within weeks, students were asking their teachers to add more questions. The duck levels came next — because learning is more fun when there's a ridiculous goal to chase.
-    </p>
-    <p class="text-gray-600 text-lg leading-relaxed">
-      Today DuckMath supports SPM and UEC mathematics syllabuses, with questions submitted and verified by experienced Malaysian math teachers.
-    </p>
+    <h2 class="text-3xl font-extrabold text-gray-900 mb-6">
+      <span class="lang-zh">我们的故事</span>
+      <span class="lang-en">Our Story</span>
+    </h2>
+    <div class="lang-zh">
+      <p class="text-gray-600 text-lg leading-relaxed mb-4">
+        鸭鸭数学由 <strong>TinkTech</strong> 打造——一支来自马来西亚的小型教育科技团队。这个想法源于多年来的观察：学生成绩不好，往往不是因为不够努力，而是因为"我试过这道题"和"你哪里算错了"之间的反馈周期长达数天，等到反馈来了，那节课早就遗忘了。
+      </p>
+      <p class="text-gray-600 text-lg leading-relaxed mb-4">
+        我们从一个简单的 Streamlit 原型、一个 Supabase 数据库和大量咖啡开始。几周之内，学生们开始要求老师添加更多题目。鸭子升级系统随之而来——因为当有一个有趣的目标可以追求时，学习会变得更有意思。
+      </p>
+      <p class="text-gray-600 text-lg leading-relaxed">
+        如今，鸭鸭数学支持独中统考数学考纲（SC04/SC05/SC06/SC07），题目均由经验丰富的马来西亚数学老师出题和审核。
+      </p>
+    </div>
+    <div class="lang-en">
+      <p class="text-gray-600 text-lg leading-relaxed mb-4">
+        DuckMath was built by <strong>TinkTech</strong>, a small education-technology team based in Malaysia. The idea was born from years of watching students struggle not because they lacked effort, but because the feedback loop between "I tried this" and "here's what you did wrong" took days — by which time the lesson was long forgotten.
+      </p>
+      <p class="text-gray-600 text-lg leading-relaxed mb-4">
+        We started with a simple Streamlit prototype, a Supabase database, and a lot of coffee. Within weeks, students were asking their teachers to add more questions. The duck levels came next — because learning is more fun when there's a ridiculous goal to chase.
+      </p>
+      <p class="text-gray-600 text-lg leading-relaxed">
+        Today DuckMath supports UEC mathematics syllabuses (SC04/SC05/SC06/SC07), with questions submitted and verified by experienced Malaysian math teachers.
+      </p>
+    </div>
   </div>
 </section>
 
 <!-- Values -->
 <section class="py-16 px-4">
   <div class="max-w-5xl mx-auto">
-    <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12">What We Stand For</h2>
+    <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12">
+      <span class="lang-zh">我们的价值观</span>
+      <span class="lang-en">What We Stand For</span>
+    </h2>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
       <div class="text-center">
         <div class="text-5xl mb-4">🎯</div>
-        <h3 class="font-bold text-lg text-gray-900 mb-2">Accuracy First</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Every question is reviewed by a human teacher before going live. AI grades answers; humans ensure the questions are correct.</p>
+        <h3 class="font-bold text-lg text-gray-900 mb-2">
+          <span class="lang-zh">准确性优先</span>
+          <span class="lang-en">Accuracy First</span>
+        </h3>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          <span class="lang-zh">每道题在上线前都经过真人老师审核。AI 批改答案，人工确保题目正确。</span>
+          <span class="lang-en">Every question is reviewed by a human teacher before going live. AI grades answers; humans ensure the questions are correct.</span>
+        </p>
       </div>
       <div class="text-center">
         <div class="text-5xl mb-4">🆓</div>
-        <h3 class="font-bold text-lg text-gray-900 mb-2">Free for Students</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Core practice will always be free. We are funded through teacher subscriptions and contextual advertising — never by charging students.</p>
+        <h3 class="font-bold text-lg text-gray-900 mb-2">
+          <span class="lang-zh">学生永久免费</span>
+          <span class="lang-en">Free for Students</span>
+        </h3>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          <span class="lang-zh">核心练习功能永远免费。我们通过老师订阅和情境广告维持运营——绝不向学生收费。</span>
+          <span class="lang-en">Core practice will always be free. We are funded through teacher subscriptions and contextual advertising — never by charging students.</span>
+        </p>
       </div>
       <div class="text-center">
         <div class="text-5xl mb-4">🔒</div>
-        <h3 class="font-bold text-lg text-gray-900 mb-2">Privacy Matters</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">We collect only what we need. Student data is never sold. See our <a href="privacy.html" class="text-blue-600 underline">Privacy Policy</a> for the full picture.</p>
+        <h3 class="font-bold text-lg text-gray-900 mb-2">
+          <span class="lang-zh">隐私至上</span>
+          <span class="lang-en">Privacy Matters</span>
+        </h3>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          <span class="lang-zh">我们只收集必要的数据，学生信息绝不出售。详情请参阅我们的<a href="privacy.html" class="text-blue-600 underline">隐私政策</a>。</span>
+          <span class="lang-en">We collect only what we need. Student data is never sold. See our <a href="privacy.html" class="text-blue-600 underline">Privacy Policy</a> for the full picture.</span>
+        </p>
       </div>
     </div>
   </div>
@@ -102,8 +182,14 @@
 <!-- Contact -->
 <section class="py-16 px-4 bg-blue-50">
   <div class="max-w-3xl mx-auto text-center">
-    <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Get In Touch</h2>
-    <p class="text-gray-500 text-lg mb-8">Whether you're a teacher who wants to contribute questions, a school that wants to partner, or just a student with feedback — we'd love to hear from you.</p>
+    <h2 class="text-3xl font-extrabold text-gray-900 mb-4">
+      <span class="lang-zh">联系我们</span>
+      <span class="lang-en">Get In Touch</span>
+    </h2>
+    <p class="text-gray-500 text-lg mb-8">
+      <span class="lang-zh">无论你是想贡献题目的老师、希望合作的学校，还是有反馈意见的学生——我们都很乐意听到你的声音。</span>
+      <span class="lang-en">Whether you're a teacher who wants to contribute questions, a school that wants to partner, or just a student with feedback — we'd love to hear from you.</span>
+    </p>
     <div class="inline-flex flex-col sm:flex-row gap-4 justify-center">
       <a href="mailto:customer.service@tinktech.com.my"
          class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full transition-colors">
@@ -120,11 +206,28 @@
 
 <!-- Footer -->
 <footer class="bg-gray-900 text-gray-400 py-8 px-4 text-center text-sm">
-  <p>© 2025 TinkTech Sdn Bhd. All rights reserved. &nbsp;·&nbsp;
-    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a> &nbsp;·&nbsp;
-    <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+  <p>© 2025 TinkTech Sdn Bhd.&nbsp;·&nbsp;
+    <a href="privacy.html" class="hover:text-white transition-colors lang-zh">隐私政策</a>
+    <a href="privacy.html" class="hover:text-white transition-colors lang-en">Privacy Policy</a>
+    &nbsp;·&nbsp;
+    <a href="terms.html" class="hover:text-white transition-colors lang-zh">服务条款</a>
+    <a href="terms.html" class="hover:text-white transition-colors lang-en">Terms of Service</a>
   </p>
 </footer>
 
+<script>
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.getElementById('btn-zh').className = lang === 'zh'
+    ? 'px-3 py-1.5 lang-btn-active transition-colors'
+    : 'px-3 py-1.5 lang-btn-inactive transition-colors';
+  document.getElementById('btn-en').className = lang === 'en'
+    ? 'px-3 py-1.5 lang-btn-active transition-colors'
+    : 'px-3 py-1.5 lang-btn-inactive transition-colors';
+  localStorage.setItem('duckmath_lang', lang);
+}
+const savedLang = localStorage.getItem('duckmath_lang');
+if (savedLang) setLang(savedLang);
+</script>
 </body>
 </html>

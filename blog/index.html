@@ -1,101 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog – DuckMath | Math Tips for Malaysian Students</title>
-  <meta name="description" content="Study tips, exam guides, and math strategies for Malaysian SPM and UEC students." />
+  <title>博客 Blog – 鸭鸭数学 DuckMath | 马来西亚数学学习资讯</title>
+  <meta name="description" content="数学学习技巧、考试攻略与独中统考资讯，专为马来西亚华文独中生而写。" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <script>tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'] } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Noto Sans SC','Inter','sans-serif'] },
+        colors: { brand: { 600:'#2563eb', 700:'#1d4ed8', 800:'#1e40af' } } } }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    html[lang="en"] .lang-zh { display: none !important; }
+    html[lang="zh"] .lang-en { display: none !important; }
+    .lang-btn-active   { background: #2563eb; color: white; }
+    .lang-btn-inactive { background: transparent; color: #6b7280; }
+  </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8007778449006887" crossorigin="anonymous"></script>
 </head>
 <body class="font-sans text-gray-800 bg-white">
 
+<!-- Nav -->
 <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
     <a href="../index.html" class="flex items-center gap-2 font-bold text-xl text-blue-800">
-      <span class="text-2xl">🦆</span> DuckMath
+      <span class="text-2xl">🦆</span>
+      <span class="lang-zh">鸭鸭数学</span>
+      <span class="lang-en">DuckMath</span>
     </a>
     <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-      <a href="../index.html#features" class="hover:text-blue-600 transition-colors">Features</a>
-      <a href="index.html" class="text-blue-600 font-semibold">Blog</a>
-      <a href="../about.html" class="hover:text-blue-600 transition-colors">About</a>
+      <a href="../index.html#features" class="hover:text-blue-600 transition-colors lang-zh">功能</a>
+      <a href="../index.html#features" class="hover:text-blue-600 transition-colors lang-en">Features</a>
+      <a href="index.html" class="text-blue-600 font-semibold lang-zh">博客</a>
+      <a href="index.html" class="text-blue-600 font-semibold lang-en">Blog</a>
+      <a href="../about.html" class="hover:text-blue-600 transition-colors lang-zh">关于</a>
+      <a href="../about.html" class="hover:text-blue-600 transition-colors lang-en">About</a>
     </div>
-    <a href="https://uecstudent.streamlit.app" target="_blank"
-       class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors">
-      Start Practising →
-    </a>
+    <div class="flex items-center gap-3">
+      <div class="flex items-center border border-gray-200 rounded-full overflow-hidden text-xs font-semibold">
+        <button id="btn-zh" onclick="setLang('zh')" class="px-3 py-1.5 lang-btn-active transition-colors">中文</button>
+        <button id="btn-en" onclick="setLang('en')" class="px-3 py-1.5 lang-btn-inactive transition-colors">EN</button>
+      </div>
+      <a href="https://uecstudent.streamlit.app" target="_blank"
+         class="hidden sm:inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors">
+        <span class="lang-zh">开始练习 →</span>
+        <span class="lang-en">Start Practising →</span>
+      </a>
+    </div>
   </div>
 </nav>
 
+<!-- Hero -->
 <section class="bg-gradient-to-br from-blue-800 to-blue-600 text-white py-16 px-4 text-center">
   <div class="max-w-2xl mx-auto">
-    <h1 class="text-4xl font-extrabold mb-3">DuckMath Blog</h1>
-    <p class="text-blue-100 text-lg">Math tips, study strategies, and exam guides for Malaysian students</p>
+    <h1 class="text-4xl font-extrabold mb-3">
+      <span class="lang-zh">鸭鸭数学博客</span>
+      <span class="lang-en">DuckMath Blog</span>
+    </h1>
+    <p class="text-blue-100 text-lg">
+      <span class="lang-zh">数学技巧、学习策略与独中统考备考指南</span>
+      <span class="lang-en">Math tips, study strategies, and exam guides for Malaysian students</span>
+    </p>
   </div>
 </section>
 
+<!-- Blog Cards -->
 <section class="max-w-5xl mx-auto px-4 py-16">
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
     <a href="spm-math-guide.html" class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow block">
       <div class="h-40 bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-6xl">📐</div>
       <div class="p-6">
-        <div class="text-xs text-blue-600 font-semibold uppercase tracking-wide mb-2">SPM Guide · 8 min read</div>
+        <div class="text-xs text-blue-600 font-semibold uppercase tracking-wide mb-2">
+          <span class="lang-zh">统考攻略 · 8 分钟阅读</span>
+          <span class="lang-en">UEC Guide · 8 min read</span>
+        </div>
         <h2 class="font-bold text-lg text-gray-900 mb-2 group-hover:text-blue-700 transition-colors leading-snug">
-          SPM Additional Mathematics: 10 Topics You Must Master
+          <span class="lang-zh">统考数学：你必须掌握的 10 大考点</span>
+          <span class="lang-en">UEC Additional Mathematics: 10 Topics You Must Master</span>
         </h2>
-        <p class="text-gray-500 text-sm leading-relaxed">A topic-by-topic breakdown of SPM Add Maths with weighting, common mistakes, and how to study each one.</p>
-        <div class="mt-4 text-blue-600 text-sm font-semibold">Read more →</div>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          <span class="lang-zh">逐一解析统考数学考点，涵盖考题权重、常见错误及各章节备考方法。</span>
+          <span class="lang-en">A topic-by-topic breakdown of UEC Maths with weighting, common mistakes, and how to study each one.</span>
+        </p>
+        <div class="mt-4 text-blue-600 text-sm font-semibold">
+          <span class="lang-zh">阅读更多 →</span>
+          <span class="lang-en">Read more →</span>
+        </div>
       </div>
     </a>
 
     <a href="effective-math-study.html" class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow block">
       <div class="h-40 bg-gradient-to-br from-green-500 to-emerald-700 flex items-center justify-center text-6xl">📖</div>
       <div class="p-6">
-        <div class="text-xs text-green-600 font-semibold uppercase tracking-wide mb-2">Study Tips · 6 min read</div>
+        <div class="text-xs text-green-600 font-semibold uppercase tracking-wide mb-2">
+          <span class="lang-zh">学习技巧 · 6 分钟阅读</span>
+          <span class="lang-en">Study Tips · 6 min read</span>
+        </div>
         <h2 class="font-bold text-lg text-gray-900 mb-2 group-hover:text-green-700 transition-colors leading-snug">
-          How to Study Mathematics Effectively: A Malaysian Student's Guide
+          <span class="lang-zh">如何有效学习数学：马来西亚学生实用指南</span>
+          <span class="lang-en">How to Study Mathematics Effectively: A Malaysian Student's Guide</span>
         </h2>
-        <p class="text-gray-500 text-sm leading-relaxed">Evidence-based techniques — spaced repetition, active recall, and timed practice — adapted for the Malaysian school context.</p>
-        <div class="mt-4 text-green-600 text-sm font-semibold">Read more →</div>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          <span class="lang-zh">间隔重复、主动回忆、定时练习——经科学验证的学习方法，为独中生量身定制。</span>
+          <span class="lang-en">Evidence-based techniques — spaced repetition, active recall, and timed practice — adapted for the Malaysian school context.</span>
+        </p>
+        <div class="mt-4 text-green-600 text-sm font-semibold">
+          <span class="lang-zh">阅读更多 →</span>
+          <span class="lang-en">Read more →</span>
+        </div>
       </div>
     </a>
 
     <a href="ai-math-education.html" class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow block">
       <div class="h-40 bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-6xl">🤖</div>
       <div class="p-6">
-        <div class="text-xs text-purple-600 font-semibold uppercase tracking-wide mb-2">EdTech · 7 min read</div>
+        <div class="text-xs text-purple-600 font-semibold uppercase tracking-wide mb-2">
+          <span class="lang-zh">教育科技 · 7 分钟阅读</span>
+          <span class="lang-en">EdTech · 7 min read</span>
+        </div>
         <h2 class="font-bold text-lg text-gray-900 mb-2 group-hover:text-purple-700 transition-colors leading-snug">
-          How AI is Changing Math Education in Malaysia
+          <span class="lang-zh">AI 如何改变马来西亚的数学教育</span>
+          <span class="lang-en">How AI is Changing Math Education in Malaysia</span>
         </h2>
-        <p class="text-gray-500 text-sm leading-relaxed">From instant feedback to adaptive learning — how artificial intelligence is reshaping the way students in Malaysia learn mathematics.</p>
-        <div class="mt-4 text-purple-600 text-sm font-semibold">Read more →</div>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          <span class="lang-zh">从即时反馈到自适应学习——人工智能正在如何重塑马来西亚学生的数学学习方式。</span>
+          <span class="lang-en">From instant feedback to adaptive learning — how AI is reshaping the way students in Malaysia learn mathematics.</span>
+        </p>
+        <div class="mt-4 text-purple-600 text-sm font-semibold">
+          <span class="lang-zh">阅读更多 →</span>
+          <span class="lang-en">Read more →</span>
+        </div>
       </div>
     </a>
 
   </div>
 </section>
 
+<!-- CTA -->
 <section class="bg-blue-50 py-16 px-4 text-center">
   <div class="max-w-xl mx-auto">
     <div class="text-5xl mb-4">🦆</div>
-    <h2 class="text-2xl font-extrabold text-gray-900 mb-3">Ready to put these tips into practice?</h2>
-    <p class="text-gray-500 mb-6">DuckMath gives you instant AI feedback on every answer — so you learn faster, not harder.</p>
+    <h2 class="text-2xl font-extrabold text-gray-900 mb-3">
+      <span class="lang-zh">准备好把这些技巧付诸实践了吗？</span>
+      <span class="lang-en">Ready to put these tips into practice?</span>
+    </h2>
+    <p class="text-gray-500 mb-6">
+      <span class="lang-zh">鸭鸭数学为每道题提供 AI 即时反馈，让你学得更快，而不只是更努力。</span>
+      <span class="lang-en">DuckMath gives you instant AI feedback on every answer — so you learn faster, not harder.</span>
+    </p>
     <a href="https://uecstudent.streamlit.app" target="_blank"
        class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-full transition-colors">
-      Start for Free →
+      <span class="lang-zh">免费开始练习 →</span>
+      <span class="lang-en">Start for Free →</span>
     </a>
   </div>
 </section>
 
+<!-- Footer -->
 <footer class="bg-gray-900 text-gray-400 py-8 px-4 text-center text-sm">
-  <p>© 2025 TinkTech Sdn Bhd. &nbsp;·&nbsp;
-    <a href="../privacy.html" class="hover:text-white transition-colors">Privacy Policy</a> &nbsp;·&nbsp;
-    <a href="../terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+  <p>© 2025 TinkTech Sdn Bhd.&nbsp;·&nbsp;
+    <a href="../privacy.html" class="hover:text-white transition-colors lang-zh">隐私政策</a>
+    <a href="../privacy.html" class="hover:text-white transition-colors lang-en">Privacy Policy</a>
+    &nbsp;·&nbsp;
+    <a href="../terms.html" class="hover:text-white transition-colors lang-zh">服务条款</a>
+    <a href="../terms.html" class="hover:text-white transition-colors lang-en">Terms of Service</a>
   </p>
 </footer>
 
+<script>
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.getElementById('btn-zh').className = lang === 'zh'
+    ? 'px-3 py-1.5 lang-btn-active transition-colors'
+    : 'px-3 py-1.5 lang-btn-inactive transition-colors';
+  document.getElementById('btn-en').className = lang === 'en'
+    ? 'px-3 py-1.5 lang-btn-active transition-colors'
+    : 'px-3 py-1.5 lang-btn-inactive transition-colors';
+  localStorage.setItem('duckmath_lang', lang);
+}
+const savedLang = localStorage.getItem('duckmath_lang');
+if (savedLang) setLang(savedLang);
+</script>
 </body>
 </html>
