@@ -293,7 +293,7 @@
           <span class="lang-en">Syllabus updates and key announcements from the United Chinese School Committees' Association</span>
         </p>
       </div>
-      <a href="https://www.dongzong.my" target="_blank" rel="noopener"
+      <a href="https://www.dongzong.my/news-zh/" target="_blank" rel="noopener"
          class="flex-shrink-0 text-sm text-brand-600 font-semibold hover:underline flex items-center gap-1">
         <span class="lang-zh">前往董总官网</span>
         <span class="lang-en">Visit Dong Zong</span>
@@ -314,7 +314,7 @@
 
     <!-- Key syllabus links (always visible) -->
     <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <a href="https://www.dongzong.my/v2/cn/index.php/education/uec-syllabus" target="_blank" rel="noopener"
+      <a href="https://uec.dongzong.my/exam-info/examination-outline" target="_blank" rel="noopener"
          class="flex items-center gap-3 bg-blue-50 hover:bg-blue-100 rounded-xl px-4 py-3 transition-colors group">
         <span class="text-2xl">📋</span>
         <div>
@@ -324,7 +324,7 @@
           <div class="text-xs text-gray-400 lang-en">SC04 / SC05 / SC06 / SC07</div>
         </div>
       </a>
-      <a href="https://www.dongzong.my/v2/cn/index.php/news" target="_blank" rel="noopener"
+      <a href="https://www.dongzong.my/news-zh/" target="_blank" rel="noopener"
          class="flex items-center gap-3 bg-red-50 hover:bg-red-100 rounded-xl px-4 py-3 transition-colors group">
         <span class="text-2xl">📰</span>
         <div>
@@ -334,7 +334,7 @@
           <div class="text-xs text-gray-400 lang-en">Latest policies &amp; education updates</div>
         </div>
       </a>
-      <a href="https://www.dongzong.my/v2/cn/index.php/education/exam-calendar" target="_blank" rel="noopener"
+      <a href="https://uec.dongzong.my/exam-info/timetable" target="_blank" rel="noopener"
          class="flex items-center gap-3 bg-green-50 hover:bg-green-100 rounded-xl px-4 py-3 transition-colors group">
         <span class="text-2xl">📅</span>
         <div>
@@ -652,7 +652,7 @@ if (savedLang) setLang(savedLang);
 // ── Dong Zong RSS news fetch ─────────────────────────────────────────────────
 // Uses rss2json free tier to fetch dongzong.my RSS (CORS-safe)
 async function loadDongZongNews() {
-  const RSS_URL = 'https://www.dongzong.my/v2/cn/index.php?format=feed&type=rss';
+  const RSS_URL = 'https://www.dongzong.my/news-zh/feed/';
   const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}&count=5`;
   try {
     const res = await fetch(API_URL, { signal: AbortSignal.timeout(6000) });
