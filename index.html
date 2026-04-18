@@ -6,9 +6,13 @@
   <title>鸭鸭数学 DuckMath – 马来西亚独中统考数学练习平台</title>
   <meta name="description" content="专为马来西亚独中生设计的 AI 数学练习平台，涵盖统考 SC04/SC05/SC06/SC07 考纲，即时 AI 批改，免费使用。" />
   <meta name="keywords" content="独中数学, 统考数学, SC04, SC05, SC06, SC07, 马来西亚华文独中, UEC mathematics, 数学练习, 董总考纲" />
-  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -17,30 +21,71 @@
           colors: {
             brand: { 50:'#eff6ff', 100:'#dbeafe', 500:'#3b82f6', 600:'#2563eb', 700:'#1d4ed8', 800:'#1e40af' },
             duck:  { 300:'#fcd34d', 400:'#fbbf24', 500:'#f59e0b' },
-            red:   { 600:'#dc2626', 700:'#b91c1c' }
+            tea:   { 50:'#f0fdf4', 100:'#dcfce7', 600:'#16a34a', 700:'#15803d' }
           }
         }
       }
     }
   </script>
+
   <style>
     html { scroll-behavior: smooth; }
     html[lang="en"] .lang-zh { display: none !important; }
     html[lang="zh"] .lang-en { display: none !important; }
-    .gradient-hero { background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #1d4ed8 100%); }
-    .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+    /* Hero gradient */
+    .gradient-hero { background: linear-gradient(135deg, #1e40af 0%, #2563eb 60%, #1d4ed8 100%); }
+    /* Teacher section gradient */
+    .gradient-teacher { background: linear-gradient(135deg, #14532d 0%, #166534 60%, #15803d 100%); }
+    /* Pain section */
+    .gradient-pain { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+
+    /* Card hover */
+    .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.10); }
+
+    /* Step connector line */
+    .step-line { position: relative; }
+    .step-line:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 56px;
+      width: 2px;
+      height: calc(100% + 16px);
+      background: linear-gradient(to bottom, #2563eb, #dbeafe);
+    }
+
+    /* News item accent */
     .news-item { border-left: 3px solid #2563eb; }
-    .lang-btn-active { background: #2563eb; color: white; }
+
+    /* Lang toggle */
+    .lang-btn-active   { background: #2563eb; color: white; }
     .lang-btn-inactive { background: transparent; color: #6b7280; }
+
+    /* Fade-in animation */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    .fade-up { animation: fadeUp 0.6s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+
+    /* Tab active state */
+    .tab-active { background: #2563eb; color: white; }
+    .tab-inactive { background: white; color: #6b7280; border: 1px solid #e5e7eb; }
   </style>
+
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8007778449006887" crossorigin="anonymous"></script>
 </head>
 <body class="font-sans text-gray-800 bg-white">
 
-<!-- ── Navigation ─────────────────────────────────────────────────────────── -->
+
+<!-- ═══════════════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════════════ -->
 <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+
     <!-- Logo -->
     <a href="index.html" class="flex items-center gap-2 font-bold text-xl text-brand-800">
       <span class="text-2xl">🦆</span>
@@ -48,16 +93,16 @@
       <span class="lang-en">DuckMath</span>
     </a>
 
-    <!-- Desktop nav links -->
-    <div class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-600">
-      <a href="#features" class="hover:text-brand-600 transition-colors lang-zh">功能</a>
-      <a href="#features" class="hover:text-brand-600 transition-colors lang-en">Features</a>
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+      <a href="#for-students" class="hover:text-brand-600 transition-colors lang-zh">学生</a>
+      <a href="#for-students" class="hover:text-brand-600 transition-colors lang-en">Students</a>
+
+      <a href="#for-teachers" class="hover:text-brand-600 transition-colors lang-zh">老师</a>
+      <a href="#for-teachers" class="hover:text-brand-600 transition-colors lang-en">Teachers</a>
 
       <a href="#syllabus" class="hover:text-brand-600 transition-colors lang-zh">考纲</a>
       <a href="#syllabus" class="hover:text-brand-600 transition-colors lang-en">Syllabus</a>
-
-      <a href="#dongjong" class="hover:text-brand-600 transition-colors lang-zh">董总动态</a>
-      <a href="#dongjong" class="hover:text-brand-600 transition-colors lang-en">Dong Zong News</a>
 
       <a href="blog/index.html" class="hover:text-brand-600 transition-colors lang-zh">博客</a>
       <a href="blog/index.html" class="hover:text-brand-600 transition-colors lang-en">Blog</a>
@@ -66,15 +111,20 @@
       <a href="about.html" class="hover:text-brand-600 transition-colors lang-en">About</a>
     </div>
 
-    <!-- Right: lang toggle + CTA -->
-    <div class="flex items-center gap-3">
+    <!-- Right: lang + CTAs -->
+    <div class="flex items-center gap-2">
       <!-- Language toggle -->
       <div class="flex items-center border border-gray-200 rounded-full overflow-hidden text-xs font-semibold">
         <button id="btn-zh" onclick="setLang('zh')" class="px-3 py-1.5 lang-btn-active transition-colors">中文</button>
         <button id="btn-en" onclick="setLang('en')" class="px-3 py-1.5 lang-btn-inactive transition-colors">EN</button>
       </div>
+      <a href="#for-teachers"
+         class="hidden sm:inline-block border border-brand-600 text-brand-600 hover:bg-brand-50 text-sm font-semibold px-3 py-1.5 rounded-full transition-colors">
+        <span class="lang-zh">老师入口</span>
+        <span class="lang-en">Teacher Portal</span>
+      </a>
       <a href="https://uecstudent.streamlit.app" target="_blank"
-         class="hidden sm:inline-block bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors shadow-md">
+         class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors shadow-md">
         <span class="lang-zh">开始练习 →</span>
         <span class="lang-en">Start Practising →</span>
       </a>
@@ -82,387 +132,258 @@
   </div>
 </nav>
 
-<!-- ── Hero ───────────────────────────────────────────────────────────────── -->
-<section class="gradient-hero text-white py-24 px-4">
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO  — ATTENTION
+     Goal: grab attention immediately, dual path for student & teacher
+════════════════════════════════════════════════════════ -->
+<section class="gradient-hero text-white py-24 px-4 overflow-hidden">
   <div class="max-w-4xl mx-auto text-center">
+
     <!-- Badge -->
-    <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
+    <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6 fade-up">
       <span>🏫</span>
       <span class="lang-zh">专为马来西亚独中统考生设计</span>
       <span class="lang-en">Built for Malaysian 独中 UEC Students</span>
     </div>
 
     <!-- Headline -->
-    <h1 class="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-6">
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-6 fade-up delay-1">
       <span class="lang-zh">练好数学，<br/><span class="text-duck-400">开启修仙路。</span></span>
       <span class="lang-en">Practice Math.<br/><span class="text-duck-400">Start Your Immortal Journey.</span></span>
     </h1>
 
     <!-- Subtext -->
-    <p class="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto mb-4">
-      <span class="lang-zh">涵盖统考 SC04 / SC05 / SC06 / SC07 全考纲。AI 即时批改，错题保存，每天练一点，成绩看得见。</span>
-      <span class="lang-en">Covering UEC SC04 / SC05 / SC06 / SC07 syllabuses. AI grading in seconds, mistake vault, daily practice streaks.</span>
+    <p class="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto mb-2 fade-up delay-2">
+      <span class="lang-zh">专为统考 SC04 / SC05 / SC06 / SC07 打造。AI 即时批改、错题记录、每天打卡——成绩看得见。</span>
+      <span class="lang-en">Built for UEC SC04 / SC05 / SC06 / SC07. AI grading, mistake vault, daily streaks — progress you can measure.</span>
     </p>
-    <p class="text-sm text-blue-200 mb-10">
-      <span class="lang-zh">根据最新董总数学考纲更新 · 免费使用</span>
-      <span class="lang-en">Aligned with latest Dong Zong math syllabus · Free to use</span>
+    <p class="text-sm text-blue-200 mb-10 fade-up delay-2">
+      <span class="lang-zh">根据最新董总数学考纲 · 免费使用</span>
+      <span class="lang-en">Aligned with the latest Dong Zong syllabus · Free to use</span>
     </p>
 
-    <!-- CTAs -->
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+    <!-- Dual CTA -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center fade-up delay-3">
+      <!-- Student CTA -->
       <a href="https://uecstudent.streamlit.app" target="_blank"
          class="bg-duck-400 hover:bg-duck-500 text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-lg transition-colors">
-        <span class="lang-zh">🦆 免费开始练习</span>
-        <span class="lang-en">🦆 Start for Free</span>
+        <span class="lang-zh">🦆 学生免费开始</span>
+        <span class="lang-en">🦆 Students — Start Free</span>
       </a>
-      <a href="#syllabus"
-         class="bg-white/20 hover:bg-white/30 text-white font-semibold px-8 py-4 rounded-full text-lg transition-colors border border-white/30">
-        <span class="lang-zh">查看考纲对应</span>
-        <span class="lang-en">View Syllabus Coverage</span>
+      <!-- Teacher CTA -->
+      <a href="#for-teachers"
+         class="bg-white/15 hover:bg-white/25 text-white font-semibold px-8 py-4 rounded-full text-lg transition-colors border border-white/40">
+        <span class="lang-zh">👩‍🏫 我是老师 →</span>
+        <span class="lang-en">👩‍🏫 I'm a Teacher →</span>
       </a>
     </div>
 
-    <!-- Stats -->
-    <div class="mt-16 grid grid-cols-3 gap-8 max-w-xl mx-auto">
+    <!-- Trust stats -->
+    <div class="mt-16 grid grid-cols-3 gap-8 max-w-md mx-auto fade-up delay-3">
       <div>
         <div class="text-3xl font-extrabold text-duck-400">10K+</div>
-        <div class="text-blue-200 text-sm mt-1 lang-zh">已解答题目</div>
-        <div class="text-blue-200 text-sm mt-1 lang-en">Questions Answered</div>
+        <div class="text-blue-200 text-xs mt-1 lang-zh">已解答题目</div>
+        <div class="text-blue-200 text-xs mt-1 lang-en">Questions Solved</div>
       </div>
       <div>
         <div class="text-3xl font-extrabold text-duck-400">4</div>
-        <div class="text-blue-200 text-sm mt-1 lang-zh">统考科目</div>
-        <div class="text-blue-200 text-sm mt-1 lang-en">UEC Subjects</div>
+        <div class="text-blue-200 text-xs mt-1 lang-zh">统考科目</div>
+        <div class="text-blue-200 text-xs mt-1 lang-en">UEC Subjects</div>
       </div>
       <div>
-        <div class="text-3xl font-extrabold text-duck-400">9</div>
-        <div class="text-blue-200 text-sm mt-1 lang-zh">鸭子等级</div>
-        <div class="text-blue-200 text-sm mt-1 lang-en">Duck Levels</div>
+        <div class="text-3xl font-extrabold text-duck-400">100%</div>
+        <div class="text-blue-200 text-xs mt-1 lang-zh">免费使用</div>
+        <div class="text-blue-200 text-xs mt-1 lang-en">Free to Use</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Syllabus Coverage ───────────────────────────────────────────────────── -->
-<section id="syllabus" class="py-20 px-4 bg-gray-50">
+
+<!-- ═══════════════════════════════════════════════════════
+     PAIN POINT  — INTEREST
+     StoryBrand: name the villain / external + internal problem
+════════════════════════════════════════════════════════ -->
+<section class="gradient-pain text-white py-20 px-4">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="text-duck-400 font-bold text-sm uppercase tracking-widest mb-4 lang-zh">你是不是也遇到这些？</p>
+    <p class="text-duck-400 font-bold text-sm uppercase tracking-widest mb-4 lang-en">Sound familiar?</p>
+
+    <h2 class="text-3xl sm:text-4xl font-extrabold mb-10">
+      <span class="lang-zh">市面上的数学 App，<br/>都不是为独中生做的。</span>
+      <span class="lang-en">Every math app out there<br/>was built for someone else.</span>
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
+      <div class="bg-white/8 rounded-2xl p-5 border border-white/10">
+        <div class="text-2xl mb-3">😤</div>
+        <h3 class="font-bold text-white mb-2 lang-zh">全是 SPM 题目</h3>
+        <h3 class="font-bold text-white mb-2 lang-en">All SPM content</h3>
+        <p class="text-gray-400 text-sm lang-zh">大部分 App 瞄准 SPM 学生。独中统考考纲和 SPM 不一样，用起来总感觉对不上号。</p>
+        <p class="text-gray-400 text-sm lang-en">Most apps target SPM students. UEC syllabuses are different — they just don't align.</p>
+      </div>
+      <div class="bg-white/8 rounded-2xl p-5 border border-white/10">
+        <div class="text-2xl mb-3">😩</div>
+        <h3 class="font-bold text-white mb-2 lang-zh">批改靠自己估</h3>
+        <h3 class="font-bold text-white mb-2 lang-en">No instant feedback</h3>
+        <p class="text-gray-400 text-sm lang-zh">做完题等老师批改，或者看答案对答案——到底哪一步算错了？还是不清楚。</p>
+        <p class="text-gray-400 text-sm lang-en">Submit your work and wait. Or guess from an answer key. You still don't know which step went wrong.</p>
+      </div>
+      <div class="bg-white/8 rounded-2xl p-5 border border-white/10">
+        <div class="text-2xl mb-3">😶</div>
+        <h3 class="font-bold text-white mb-2 lang-zh">练了但没动力坚持</h3>
+        <h3 class="font-bold text-white mb-2 lang-en">No reason to keep going</h3>
+        <p class="text-gray-400 text-sm lang-zh">刷题枯燥，没有成就感，三天热度就放弃了。考试前才临时抱佛脚。</p>
+        <p class="text-gray-400 text-sm lang-en">Drilling problems is boring. No progress feedback, no reason to show up tomorrow.</p>
+      </div>
+    </div>
+
+    <div class="mt-10 inline-flex items-center gap-3 bg-duck-400/10 border border-duck-400/30 rounded-full px-6 py-3 text-duck-300 font-semibold text-sm">
+      <span class="text-xl">🦆</span>
+      <span class="lang-zh">鸭鸭数学就是为了解决这三个问题而生的。</span>
+      <span class="lang-en">DuckMath was built to solve exactly these three problems.</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     FOR STUDENTS  — INTEREST → DESIRE
+     Features reframed as student benefits + how it works
+════════════════════════════════════════════════════════ -->
+<section id="for-students" class="py-20 px-4 bg-white">
   <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
-        <span class="lang-zh">统考数学考纲全覆盖</span>
-        <span class="lang-en">Full UEC Syllabus Coverage</span>
-      </h2>
-      <p class="text-gray-500 mt-3">
-        <span class="lang-zh">根据董总最新颁布的数学考纲编排题库，每道题均标注考纲章节</span>
-        <span class="lang-en">Question bank mapped to the latest Dong Zong syllabus, every question tagged by chapter</span>
-      </p>
-    </div>
 
-    <!-- 分枝标签 -->
-    <div class="flex gap-4 mb-6">
-      <div class="flex items-center gap-2 bg-green-50 border border-green-200 rounded-full px-4 py-1.5 text-sm font-semibold text-green-700">
-        <span>📚</span>
-        <span class="lang-zh">文商分枝</span>
-        <span class="lang-en">Arts &amp; Commerce Stream</span>
-      </div>
-      <div class="flex items-center gap-2 bg-purple-50 border border-purple-200 rounded-full px-4 py-1.5 text-sm font-semibold text-purple-700">
-        <span>🔬</span>
-        <span class="lang-zh">理科分枝</span>
-        <span class="lang-en">Science Stream</span>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      <!-- SC04 文商 -->
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-green-100 card-hover">
-        <div class="flex items-start gap-4">
-          <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">📗</div>
-          <div>
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-xs font-bold bg-green-100 text-green-700 px-2 py-0.5 rounded-full">SC04</span>
-              <span class="text-xs text-green-600 font-medium lang-zh">文商</span>
-              <span class="text-xs text-green-600 font-medium lang-en">Arts/Commerce</span>
-            </div>
-            <h3 class="font-bold text-gray-900 mb-1">
-              <span class="lang-zh">数学</span>
-              <span class="lang-en">Mathematics</span>
-            </h3>
-            <p class="text-gray-500 text-sm lang-zh">文商分枝核心数学科目。代数、几何、统计与概率，涵盖统考高三文商考生必考范围。</p>
-            <p class="text-gray-500 text-sm lang-en">Core math for Arts &amp; Commerce stream. Algebra, geometry, statistics and probability for UEC Form 6 candidates.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- SC05 文商 -->
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-green-100 card-hover">
-        <div class="flex items-start gap-4">
-          <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">📘</div>
-          <div>
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-xs font-bold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full">SC05</span>
-              <span class="text-xs text-green-600 font-medium lang-zh">文商</span>
-              <span class="text-xs text-green-600 font-medium lang-en">Arts/Commerce</span>
-            </div>
-            <h3 class="font-bold text-gray-900 mb-1">
-              <span class="lang-zh">高中数学</span>
-              <span class="lang-en">Upper Secondary Mathematics</span>
-            </h3>
-            <p class="text-gray-500 text-sm lang-zh">文商高级数学。函数、数列、坐标几何、三角函数、微积分入门，进阶备考首选。</p>
-            <p class="text-gray-500 text-sm lang-en">Advanced math for Arts &amp; Commerce stream. Functions, sequences, coordinate geometry, trigonometry, intro calculus.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- SC06 理科 -->
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-purple-100 card-hover">
-        <div class="flex items-start gap-4">
-          <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">📙</div>
-          <div>
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-xs font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">SC06</span>
-              <span class="text-xs text-purple-600 font-medium lang-zh">理科</span>
-              <span class="text-xs text-purple-600 font-medium lang-en">Science</span>
-            </div>
-            <h3 class="font-bold text-gray-900 mb-1">
-              <span class="lang-zh">高级数学 (I)</span>
-              <span class="lang-en">Advanced Mathematics (I)</span>
-            </h3>
-            <p class="text-gray-500 text-sm lang-zh">理科分枝数学科目。微积分、向量、矩阵、复数，对应大学先修及理工科入学要求。</p>
-            <p class="text-gray-500 text-sm lang-en">Science stream mathematics. Calculus, vectors, matrices, complex numbers — university-preparatory STEM track.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- SC07 理科 -->
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-purple-100 card-hover">
-        <div class="flex items-start gap-4">
-          <div class="w-14 h-14 bg-violet-100 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">📕</div>
-          <div>
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-xs font-bold bg-violet-100 text-violet-700 px-2 py-0.5 rounded-full">SC07</span>
-              <span class="text-xs text-purple-600 font-medium lang-zh">理科</span>
-              <span class="text-xs text-purple-600 font-medium lang-en">Science</span>
-            </div>
-            <h3 class="font-bold text-gray-900 mb-1">
-              <span class="lang-zh">高级数学 (II)</span>
-              <span class="lang-en">Advanced Mathematics (II)</span>
-            </h3>
-            <p class="text-gray-500 text-sm lang-zh">理科高级数学。概率分布、统计推断、数值方法等，与 SC06 并修深化理科数学能力。</p>
-            <p class="text-gray-500 text-sm lang-en">Advanced science stream math. Probability distributions, statistical inference, numerical methods — taken alongside SC06.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- JE04 Coming Soon — 横跨两格 -->
-      <div class="sm:col-span-2 bg-gray-50 rounded-2xl p-6 border-2 border-dashed border-gray-200 relative overflow-hidden">
-        <div class="absolute top-3 right-3">
-          <span class="text-xs font-bold bg-duck-400 text-gray-900 px-2.5 py-1 rounded-full lang-zh">即将推出</span>
-          <span class="text-xs font-bold bg-duck-400 text-gray-900 px-2.5 py-1 rounded-full lang-en">Coming Soon</span>
-        </div>
-        <div class="flex items-start gap-4 opacity-60">
-          <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">📓</div>
-          <div>
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-xs font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">JE04</span>
-            </div>
-            <h3 class="font-bold text-gray-700 mb-1">
-              <span class="lang-zh">初中数学</span>
-              <span class="lang-en">Lower Secondary Mathematics</span>
-            </h3>
-            <p class="text-gray-400 text-sm lang-zh">初中数学题库（JE04）正在整理中，敬请期待！打好初中根基，迎战高中统考。</p>
-            <p class="text-gray-400 text-sm lang-en">JE04 lower secondary question bank is being prepared. Coming soon — build your foundations before tackling UEC upper secondary.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 董总 News Section ───────────────────────────────────────────────────── -->
-<section id="dongjong" class="py-20 px-4 bg-white">
-  <div class="max-w-5xl mx-auto">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-      <div>
-        <div class="flex items-center gap-3 mb-2">
-          <div class="w-8 h-8 bg-red-600 rounded flex items-center justify-center text-white font-black text-sm">董</div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900">
-            <span class="lang-zh">董总最新动态</span>
-            <span class="lang-en">Dong Zong Latest News</span>
-          </h2>
-        </div>
-        <p class="text-gray-500 text-sm">
-          <span class="lang-zh">实时同步马来西亚华文独中统考考纲变动及重要公告</span>
-          <span class="lang-en">Syllabus updates and key announcements from the United Chinese School Committees' Association</span>
-        </p>
-      </div>
-      <a href="https://www.dongzong.my/news-zh/" target="_blank" rel="noopener"
-         class="flex-shrink-0 text-sm text-brand-600 font-semibold hover:underline flex items-center gap-1">
-        <span class="lang-zh">前往董总官网</span>
-        <span class="lang-en">Visit Dong Zong</span>
-        <span>↗</span>
-      </a>
-    </div>
-
-    <!-- News grid: populated by JS, with static fallback -->
-    <div id="news-container" class="space-y-4">
-      <!-- Static fallback items (shown while JS loads, replaced if RSS works) -->
-      <div class="news-item pl-4 py-3 bg-gray-50 rounded-r-xl" id="news-fallback">
-        <div class="text-xs text-gray-400 mb-1 lang-zh">📢 重要提醒</div>
-        <div class="text-xs text-gray-400 mb-1 lang-en">📢 Important Notice</div>
-        <p class="font-semibold text-gray-900 text-sm lang-zh">正在载入董总最新公告…如未能显示，请直接前往董总官网查阅。</p>
-        <p class="font-semibold text-gray-900 text-sm lang-en">Loading Dong Zong announcements… If not displayed, visit dongzong.my directly.</p>
-      </div>
-    </div>
-
-    <!-- Key syllabus links (always visible) -->
-    <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <a href="https://uec.dongzong.my/exam-info/examination-outline" target="_blank" rel="noopener"
-         class="flex items-center gap-3 bg-blue-50 hover:bg-blue-100 rounded-xl px-4 py-3 transition-colors group">
-        <span class="text-2xl">📋</span>
-        <div>
-          <div class="font-semibold text-sm text-gray-900 group-hover:text-blue-700 lang-zh">统考数学考纲</div>
-          <div class="font-semibold text-sm text-gray-900 group-hover:text-blue-700 lang-en">UEC Math Syllabus</div>
-          <div class="text-xs text-gray-400 lang-zh">SC04 / SC05 / SC06 / SC07</div>
-          <div class="text-xs text-gray-400 lang-en">SC04 / SC05 / SC06 / SC07</div>
-        </div>
-      </a>
-      <a href="https://www.dongzong.my/news-zh/" target="_blank" rel="noopener"
-         class="flex items-center gap-3 bg-red-50 hover:bg-red-100 rounded-xl px-4 py-3 transition-colors group">
-        <span class="text-2xl">📰</span>
-        <div>
-          <div class="font-semibold text-sm text-gray-900 group-hover:text-red-700 lang-zh">董总新闻公告</div>
-          <div class="font-semibold text-sm text-gray-900 group-hover:text-red-700 lang-en">Dong Zong News</div>
-          <div class="text-xs text-gray-400 lang-zh">最新政策与教育资讯</div>
-          <div class="text-xs text-gray-400 lang-en">Latest policies &amp; education updates</div>
-        </div>
-      </a>
-      <a href="https://uec.dongzong.my/exam-info/timetable" target="_blank" rel="noopener"
-         class="flex items-center gap-3 bg-green-50 hover:bg-green-100 rounded-xl px-4 py-3 transition-colors group">
-        <span class="text-2xl">📅</span>
-        <div>
-          <div class="font-semibold text-sm text-gray-900 group-hover:text-green-700 lang-zh">统考考试日历</div>
-          <div class="font-semibold text-sm text-gray-900 group-hover:text-green-700 lang-en">UEC Exam Calendar</div>
-          <div class="text-xs text-gray-400 lang-zh">重要考试日期</div>
-          <div class="text-xs text-gray-400 lang-en">Key exam dates</div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ── Features ───────────────────────────────────────────────────────────── -->
-<section id="features" class="py-20 px-4 bg-gray-50">
-  <div class="max-w-6xl mx-auto">
+    <!-- Section header -->
     <div class="text-center mb-14">
+      <div class="inline-flex items-center gap-2 bg-brand-50 rounded-full px-4 py-1.5 text-sm font-semibold text-brand-700 mb-4">
+        <span>🎓</span>
+        <span class="lang-zh">学生专区</span>
+        <span class="lang-en">For Students</span>
+      </div>
       <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
-        <span class="lang-zh">为什么选择鸭鸭数学？</span>
-        <span class="lang-en">Why DuckMath?</span>
+        <span class="lang-zh">练得更聪明，不只是练得更多</span>
+        <span class="lang-en">Practice smarter, not just more</span>
       </h2>
-      <p class="text-gray-500 mt-3 text-lg">
-        <span class="lang-zh">专为独中生打造，不是翻译版的 SPM 工具</span>
-        <span class="lang-en">Built specifically for 独中 students — not an adapted SPM tool</span>
-      </p>
+      <p class="text-gray-500 mt-3 text-lg lang-zh">每一分钟的练习，都有 AI 帮你把关</p>
+      <p class="text-gray-500 mt-3 text-lg lang-en">Every minute you practice, AI has your back</p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100">
+
+    <!-- Feature grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+      <div class="bg-gray-50 rounded-2xl p-6 card-hover border border-gray-100">
         <div class="text-4xl mb-4">🤖</div>
         <h3 class="font-bold text-lg text-gray-900 mb-2 lang-zh">AI 即时批改</h3>
         <h3 class="font-bold text-lg text-gray-900 mb-2 lang-en">Instant AI Grading</h3>
-        <p class="text-gray-500 text-sm leading-relaxed lang-zh">提交答案后秒级反馈。不只告诉你对错——AI 会逐步指出你哪里算错、用了什么错误方法。</p>
-        <p class="text-gray-500 text-sm leading-relaxed lang-en">Feedback in seconds after submitting. Not just right/wrong — AI pinpoints exactly which step went wrong and why.</p>
+        <p class="text-gray-500 text-sm leading-relaxed lang-zh">提交后秒级反馈——不只说对错，AI 逐步指出你哪一步算错、用了什么错误方法。</p>
+        <p class="text-gray-500 text-sm leading-relaxed lang-en">Feedback in seconds. Not just right/wrong — AI shows exactly which step went wrong and why.</p>
       </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100">
-        <div class="text-4xl mb-4">📖</div>
-        <h3 class="font-bold text-lg text-gray-900 mb-2 lang-zh">Paper 1 & Paper 2 全覆盖</h3>
-        <h3 class="font-bold text-lg text-gray-900 mb-2 lang-en">Paper 1 &amp; 2 Coverage</h3>
-        <p class="text-gray-500 text-sm leading-relaxed lang-zh">选择题（Paper 1）和结构题（Paper 2）均支持，包含图片上传手写解题功能。</p>
-        <p class="text-gray-500 text-sm leading-relaxed lang-en">MCQ (Paper 1) and structured questions (Paper 2) — including photo upload for handwritten working.</p>
+
+      <div class="bg-gray-50 rounded-2xl p-6 card-hover border border-gray-100">
+        <div class="text-4xl mb-4">📸</div>
+        <h3 class="font-bold text-lg text-gray-900 mb-2 lang-zh">拍照上传手写解答</h3>
+        <h3 class="font-bold text-lg text-gray-900 mb-2 lang-en">Photo Upload for Handwriting</h3>
+        <p class="text-gray-500 text-sm leading-relaxed lang-zh">Paper 2 结构题支持拍照上传——把手写计算纸拍下来，AI 直接批改。</p>
+        <p class="text-gray-500 text-sm leading-relaxed lang-en">Paper 2 structured questions support handwritten photo upload. Snap your working, AI grades it.</p>
       </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100">
-        <div class="text-4xl mb-4">🪙</div>
-        <h3 class="font-bold text-lg text-gray-900 mb-2 lang-zh">Token 积分系统</h3>
-        <h3 class="font-bold text-lg text-gray-900 mb-2 lang-en">Token Reward System</h3>
-        <p class="text-gray-500 text-sm leading-relaxed lang-zh">每答对一题赚取 token，用来解锁 AI 提示。每天练习有奖励，不练习会少 token。</p>
-        <p class="text-gray-500 text-sm leading-relaxed lang-en">Earn tokens for correct answers, spend them to unlock AI hints. Practice daily to keep your tokens growing.</p>
-      </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100">
+
+      <div class="bg-gray-50 rounded-2xl p-6 card-hover border border-gray-100">
         <div class="text-4xl mb-4">📚</div>
         <h3 class="font-bold text-lg text-gray-900 mb-2 lang-zh">错题保险库</h3>
         <h3 class="font-bold text-lg text-gray-900 mb-2 lang-en">Mistake Vault</h3>
-        <p class="text-gray-500 text-sm leading-relaxed lang-zh">答错的题目自动保存。考前专项复习弱点章节，清空保险库额外获得奖励 token。</p>
-        <p class="text-gray-500 text-sm leading-relaxed lang-en">Wrong answers saved automatically. Pre-exam targeted review of weak topics. Bonus tokens for clearing the vault.</p>
+        <p class="text-gray-500 text-sm leading-relaxed lang-zh">答错自动存档。考前专项复习弱点章节，清空保险库还能拿奖励 token。</p>
+        <p class="text-gray-500 text-sm leading-relaxed lang-en">Wrong answers auto-saved. Review weak chapters before exams. Bonus tokens for clearing the vault.</p>
       </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100">
+
+      <div class="bg-gray-50 rounded-2xl p-6 card-hover border border-gray-100">
+        <div class="text-4xl mb-4">🪙</div>
+        <h3 class="font-bold text-lg text-gray-900 mb-2 lang-zh">Token 积分系统</h3>
+        <h3 class="font-bold text-lg text-gray-900 mb-2 lang-en">Token Reward System</h3>
+        <p class="text-gray-500 text-sm leading-relaxed lang-zh">答对赚 token，用来解锁 AI 提示。每天练习有奖励——让坚持变成习惯。</p>
+        <p class="text-gray-500 text-sm leading-relaxed lang-en">Earn tokens for correct answers, spend them on AI hints. Daily streaks make practice stick.</p>
+      </div>
+
+      <div class="bg-gray-50 rounded-2xl p-6 card-hover border border-gray-100">
         <div class="text-4xl mb-4">🏆</div>
         <h3 class="font-bold text-lg text-gray-900 mb-2 lang-zh">班级排行榜</h3>
         <h3 class="font-bold text-lg text-gray-900 mb-2 lang-en">Class Leaderboard</h3>
-        <p class="text-gray-500 text-sm leading-relaxed lang-zh">与同班同学实时竞争排名。健康的竞争让练习不无聊——看着自己爬上榜首。</p>
-        <p class="text-gray-500 text-sm leading-relaxed lang-en">Compete with classmates on the live leaderboard. Healthy competition makes daily practice genuinely exciting.</p>
+        <p class="text-gray-500 text-sm leading-relaxed lang-zh">与同班同学实时竞争排名。健康竞争让练习不无聊——看着名次往上爬。</p>
+        <p class="text-gray-500 text-sm leading-relaxed lang-en">Compete with classmates live. Healthy rivalry makes practice genuinely exciting.</p>
       </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100">
-        <div class="text-4xl mb-4">👩‍🏫</div>
-        <h3 class="font-bold text-lg text-gray-900 mb-2 lang-zh">老师上题平台</h3>
-        <h3 class="font-bold text-lg text-gray-900 mb-2 lang-en">Teacher Upload Portal</h3>
-        <p class="text-gray-500 text-sm leading-relaxed lang-zh">独中数学老师可上传题目、设置答案、追踪全班练习数据。审核后题目进入公共题库。</p>
-        <p class="text-gray-500 text-sm leading-relaxed lang-en">独中 math teachers can upload questions, set answers, and track class performance. Reviewed before entering the shared bank.</p>
+
+      <div class="bg-gray-50 rounded-2xl p-6 card-hover border border-gray-100">
+        <div class="text-4xl mb-4">📖</div>
+        <h3 class="font-bold text-lg text-gray-900 mb-2 lang-zh">Paper 1 & 2 全覆盖</h3>
+        <h3 class="font-bold text-lg text-gray-900 mb-2 lang-en">Paper 1 &amp; 2 Coverage</h3>
+        <p class="text-gray-500 text-sm leading-relaxed lang-zh">选择题（Paper 1）和结构题（Paper 2）均支持，完整备考两张试卷。</p>
+        <p class="text-gray-500 text-sm leading-relaxed lang-en">MCQ and structured questions both covered — complete preparation for both exam papers.</p>
+      </div>
+    </div>
+
+    <!-- How it works -->
+    <div class="bg-brand-50 rounded-3xl p-8 sm:p-12">
+      <h3 class="text-2xl font-extrabold text-gray-900 mb-8 text-center lang-zh">三步开始，不需要安装任何东西</h3>
+      <h3 class="text-2xl font-extrabold text-gray-900 mb-8 text-center lang-en">Three steps — no installation needed</h3>
+
+      <div class="space-y-8 max-w-2xl mx-auto">
+        <div class="flex gap-5 items-start step-line">
+          <div class="flex-shrink-0 w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center text-lg font-bold shadow-md">1</div>
+          <div class="pt-1">
+            <h4 class="text-lg font-bold text-gray-900 mb-1 lang-zh">注册账号，选择你的科目</h4>
+            <h4 class="text-lg font-bold text-gray-900 mb-1 lang-en">Sign up &amp; choose your subjects</h4>
+            <p class="text-gray-500 text-sm lang-zh">用邮箱注册，选择 SC04 / SC05 / SC06 / SC07，无需信用卡，30 秒完成。</p>
+            <p class="text-gray-500 text-sm lang-en">Register with email, pick your UEC subjects. No credit card. Done in 30 seconds.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-5 items-start step-line">
+          <div class="flex-shrink-0 w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center text-lg font-bold shadow-md">2</div>
+          <div class="pt-1">
+            <h4 class="text-lg font-bold text-gray-900 mb-1 lang-zh">选题作答，提交解题过程</h4>
+            <h4 class="text-lg font-bold text-gray-900 mb-1 lang-en">Pick a question &amp; submit your working</h4>
+            <p class="text-gray-500 text-sm lang-zh">选择题点答案；结构题可打字或拍照上传手写。AI 数秒内批改并给出详细解释。</p>
+            <p class="text-gray-500 text-sm lang-en">MCQ: tap your answer. Paper 2: type or upload a photo. AI grades it with a full explanation in seconds.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-5 items-start">
+          <div class="flex-shrink-0 w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center text-lg font-bold shadow-md">3</div>
+          <div class="pt-1">
+            <h4 class="text-lg font-bold text-gray-900 mb-1 lang-zh">赚 Token，升鸭子等级</h4>
+            <h4 class="text-lg font-bold text-gray-900 mb-1 lang-en">Earn tokens &amp; level up your duck</h4>
+            <p class="text-gray-500 text-sm lang-zh">答对积分，积分升级——从 🥚 小白进化到 🏮 修仙鸭。爬上排行榜，让同学看到你的名字。</p>
+            <p class="text-gray-500 text-sm lang-en">Points unlock duck levels — from 🥚 Newbie to 🏮 Immortal Duck. Watch your leaderboard rank rise.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="https://uecstudent.streamlit.app" target="_blank"
+           class="inline-block bg-brand-600 hover:bg-brand-700 text-white font-bold px-8 py-4 rounded-full text-lg shadow-lg transition-colors">
+          <span class="lang-zh">🦆 免费开始练习</span>
+          <span class="lang-en">🦆 Start for Free</span>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── How It Works ───────────────────────────────────────────────────────── -->
-<section id="how-it-works" class="py-20 px-4">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-14">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
-        <span class="lang-zh">怎么用？</span>
-        <span class="lang-en">How It Works</span>
-      </h2>
-      <p class="text-gray-500 mt-3 text-lg lang-zh">三步开始，不需要安装任何东西</p>
-      <p class="text-gray-500 mt-3 text-lg lang-en">Three steps — no installation required</p>
-    </div>
-    <div class="space-y-10">
-      <div class="flex gap-6 items-start">
-        <div class="flex-shrink-0 w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center text-xl font-bold shadow-lg">1</div>
-        <div>
-          <h3 class="text-xl font-bold text-gray-900 mb-1 lang-zh">注册账号，选择你的科目</h3>
-          <h3 class="text-xl font-bold text-gray-900 mb-1 lang-en">Sign Up &amp; Choose Your Subjects</h3>
-          <p class="text-gray-500 leading-relaxed lang-zh">用邮箱注册，选择 SC04/SC05/SC06/SC07，不需要信用卡。30 秒搞定。</p>
-          <p class="text-gray-500 leading-relaxed lang-en">Register with email, select SC04/SC05/SC06/SC07. No credit card. Done in 30 seconds.</p>
-        </div>
-      </div>
-      <div class="flex gap-6 items-start">
-        <div class="flex-shrink-0 w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center text-xl font-bold shadow-lg">2</div>
-        <div>
-          <h3 class="text-xl font-bold text-gray-900 mb-1 lang-zh">选题作答，提交解题过程</h3>
-          <h3 class="text-xl font-bold text-gray-900 mb-1 lang-en">Pick a Question &amp; Submit Your Working</h3>
-          <p class="text-gray-500 leading-relaxed lang-zh">选择题直接点答案；结构题可以打字或拍照上传手写答题纸。AI 在数秒内批改并给出详细解释。</p>
-          <p class="text-gray-500 leading-relaxed lang-en">MCQ: click your answer. Paper 2: type or photograph your handwritten working. AI grades it with a full explanation in seconds.</p>
-        </div>
-      </div>
-      <div class="flex gap-6 items-start">
-        <div class="flex-shrink-0 w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center text-xl font-bold shadow-lg">3</div>
-        <div>
-          <h3 class="text-xl font-bold text-gray-900 mb-1 lang-zh">赚 Token，升鸭子等级</h3>
-          <h3 class="text-xl font-bold text-gray-900 mb-1 lang-en">Earn Tokens &amp; Level Up Your Duck</h3>
-          <p class="text-gray-500 leading-relaxed lang-zh">答对积分，积分升级，从 🥚 小白一路进化到 🏮 修仙鸭。看着排行榜名次往上爬。</p>
-          <p class="text-gray-500 leading-relaxed lang-en">Correct answers earn points. Points unlock duck levels — from 🥚 Newbie to 🏮 Immortal Duck. Watch your leaderboard rank climb.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ── Duck Levels ─────────────────────────────────────────────────────────── -->
+<!-- ═══════════════════════════════════════════════════════
+     DUCK LEVEL SYSTEM  — DESIRE (gamification hook)
+════════════════════════════════════════════════════════ -->
 <section id="levels" class="py-20 px-4 bg-gradient-to-b from-blue-50 to-white">
   <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-14">
+    <div class="text-center mb-10">
       <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
-        <span class="lang-zh">鸭子等级系统</span>
-        <span class="lang-en">The Duck Level System</span>
+        <span class="lang-zh">你离修仙还有多远？</span>
+        <span class="lang-en">How far are you from immortality?</span>
       </h2>
-      <p class="text-gray-500 mt-3 text-lg lang-zh">9 个等级，你离修仙还有多远？</p>
-      <p class="text-gray-500 mt-3 text-lg lang-en">9 levels stand between you and mathematical immortality</p>
+      <p class="text-gray-500 mt-3 lang-zh">9 个鸭子等级，从小白蛋到得道修仙者</p>
+      <p class="text-gray-500 mt-3 lang-en">9 duck levels — from newborn egg to mathematical immortal</p>
     </div>
+
     <div class="grid grid-cols-3 sm:grid-cols-5 gap-3">
       <div class="bg-white rounded-2xl p-3 text-center shadow-sm border border-gray-100 card-hover">
         <div class="text-3xl mb-1">🥚</div>
@@ -512,7 +433,7 @@
         <div class="font-bold text-xs text-gray-900 lang-en">Enlightened Duck</div>
         <div class="text-xs text-gray-400 mt-0.5">1000 pts</div>
       </div>
-      <div class="bg-gradient-to-b from-yellow-50 to-white rounded-2xl p-3 text-center shadow-sm border border-yellow-200 card-hover col-span-1">
+      <div class="bg-gradient-to-b from-yellow-50 to-white rounded-2xl p-3 text-center shadow-md border-2 border-duck-300 card-hover col-span-1">
         <div class="text-3xl mb-1">🏮</div>
         <div class="font-bold text-xs text-duck-500 lang-zh">修仙者</div>
         <div class="font-bold text-xs text-duck-500 lang-en">Immortal Duck</div>
@@ -522,7 +443,277 @@
   </div>
 </section>
 
-<!-- ── Blog Preview ───────────────────────────────────────────────────────── -->
+
+<!-- ═══════════════════════════════════════════════════════
+     FOR TEACHERS  — DESIRE (separate conversion track)
+     Green theme to visually distinguish from student section
+════════════════════════════════════════════════════════ -->
+<section id="for-teachers" class="py-20 px-4 gradient-teacher text-white">
+  <div class="max-w-5xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center gap-2 bg-white/15 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
+        <span>👩‍🏫</span>
+        <span class="lang-zh">老师专区</span>
+        <span class="lang-en">For Teachers</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold">
+        <span class="lang-zh">把批改时间还给你，<br/>把练习数据交给你</span>
+        <span class="lang-en">Less time marking.<br/>More insight into your class.</span>
+      </h2>
+      <p class="text-green-200 mt-4 text-lg lang-zh">独中数学老师上传题目、追踪全班进度——AI 做苦力，你做决策</p>
+      <p class="text-green-200 mt-4 text-lg lang-en">Upload questions, monitor class progress — let AI do the grading while you focus on teaching.</p>
+    </div>
+
+    <!-- Teacher feature list -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+      <div class="bg-white/10 rounded-2xl p-6 border border-white/15 card-hover">
+        <div class="text-4xl mb-4">📤</div>
+        <h3 class="font-bold text-lg text-white mb-2 lang-zh">上传自订题目</h3>
+        <h3 class="font-bold text-lg text-white mb-2 lang-en">Upload Custom Questions</h3>
+        <p class="text-green-200 text-sm leading-relaxed lang-zh">上传你的题目、设置标准答案。经过审核后，题目会进入公共题库供所有独中生使用。</p>
+        <p class="text-green-200 text-sm leading-relaxed lang-en">Upload your own questions and set answer keys. After review, they enter the shared question bank for all UEC students.</p>
+      </div>
+
+      <div class="bg-white/10 rounded-2xl p-6 border border-white/15 card-hover">
+        <div class="text-4xl mb-4">📊</div>
+        <h3 class="font-bold text-lg text-white mb-2 lang-zh">追踪全班练习数据</h3>
+        <h3 class="font-bold text-lg text-white mb-2 lang-en">Track Class Performance</h3>
+        <p class="text-green-200 text-sm leading-relaxed lang-zh">实时查看全班哪道题错误率最高、哪个章节最薄弱——精准决定下节课讲什么。</p>
+        <p class="text-green-200 text-sm leading-relaxed lang-en">See which questions trip up most students, which chapters are weakest. Data-driven lesson planning.</p>
+      </div>
+
+      <div class="bg-white/10 rounded-2xl p-6 border border-white/15 card-hover">
+        <div class="text-4xl mb-4">🤝</div>
+        <h3 class="font-bold text-lg text-white mb-2 lang-zh">让学生主动练习</h3>
+        <h3 class="font-bold text-lg text-white mb-2 lang-en">Students Come Back on Their Own</h3>
+        <p class="text-green-200 text-sm leading-relaxed lang-zh">排行榜、等级系统和 token 奖励驱动学生自发练习——不需要你每次催。</p>
+        <p class="text-green-200 text-sm leading-relaxed lang-en">Leaderboards, levels, and tokens keep students coming back without you having to chase them.</p>
+      </div>
+    </div>
+
+    <!-- Teacher CTA -->
+    <div class="text-center">
+      <a href="mailto:customer.service@tinktech.com.my?subject=老师申请 DuckMath 课室账号"
+         class="inline-block bg-duck-400 hover:bg-duck-500 text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-xl transition-colors">
+        <span class="lang-zh">📧 联系我们申请老师账号</span>
+        <span class="lang-en">📧 Contact Us for Teacher Access</span>
+      </a>
+      <p class="text-green-300 text-sm mt-4 lang-zh">完全免费 · 独中数学老师优先开放</p>
+      <p class="text-green-300 text-sm mt-4 lang-en">Completely free · Priority access for 独中 math teachers</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SYLLABUS COVERAGE  — Trust / Authority
+     Moved here for detail-seekers; no longer a conversion blocker
+════════════════════════════════════════════════════════ -->
+<section id="syllabus" class="py-20 px-4 bg-gray-50">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+        <span class="lang-zh">统考数学考纲全覆盖</span>
+        <span class="lang-en">Full UEC Syllabus Coverage</span>
+      </h2>
+      <p class="text-gray-500 mt-3 lang-zh">根据董总最新数学考纲编排题库，每道题均标注考纲章节</p>
+      <p class="text-gray-500 mt-3 lang-en">Question bank mapped to the latest Dong Zong syllabus — every question tagged by chapter</p>
+    </div>
+
+    <!-- Stream badges -->
+    <div class="flex gap-4 mb-6">
+      <div class="flex items-center gap-2 bg-green-50 border border-green-200 rounded-full px-4 py-1.5 text-sm font-semibold text-green-700">
+        <span>📚</span>
+        <span class="lang-zh">文商分枝</span>
+        <span class="lang-en">Arts &amp; Commerce Stream</span>
+      </div>
+      <div class="flex items-center gap-2 bg-purple-50 border border-purple-200 rounded-full px-4 py-1.5 text-sm font-semibold text-purple-700">
+        <span>🔬</span>
+        <span class="lang-zh">理科分枝</span>
+        <span class="lang-en">Science Stream</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-green-100 card-hover">
+        <div class="flex items-start gap-4">
+          <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">📗</div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-bold bg-green-100 text-green-700 px-2 py-0.5 rounded-full">SC04</span>
+              <span class="text-xs text-green-600 font-medium lang-zh">文商</span>
+              <span class="text-xs text-green-600 font-medium lang-en">Arts/Commerce</span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-1">
+              <span class="lang-zh">数学</span>
+              <span class="lang-en">Mathematics</span>
+            </h3>
+            <p class="text-gray-500 text-sm lang-zh">代数、几何、统计与概率——涵盖统考高三文商考生必考范围。</p>
+            <p class="text-gray-500 text-sm lang-en">Algebra, geometry, statistics and probability for UEC Form 6 Arts &amp; Commerce candidates.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-green-100 card-hover">
+        <div class="flex items-start gap-4">
+          <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">📘</div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-bold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full">SC05</span>
+              <span class="text-xs text-green-600 font-medium lang-zh">文商</span>
+              <span class="text-xs text-green-600 font-medium lang-en">Arts/Commerce</span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-1">
+              <span class="lang-zh">高中数学</span>
+              <span class="lang-en">Upper Secondary Mathematics</span>
+            </h3>
+            <p class="text-gray-500 text-sm lang-zh">函数、数列、坐标几何、三角函数、微积分入门——进阶备考首选。</p>
+            <p class="text-gray-500 text-sm lang-en">Functions, sequences, coordinate geometry, trigonometry, intro calculus for advanced Arts &amp; Commerce.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-purple-100 card-hover">
+        <div class="flex items-start gap-4">
+          <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">📙</div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">SC06</span>
+              <span class="text-xs text-purple-600 font-medium lang-zh">理科</span>
+              <span class="text-xs text-purple-600 font-medium lang-en">Science</span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-1">
+              <span class="lang-zh">高级数学 (I)</span>
+              <span class="lang-en">Advanced Mathematics (I)</span>
+            </h3>
+            <p class="text-gray-500 text-sm lang-zh">微积分、向量、矩阵、复数——对应大学先修及理工科入学要求。</p>
+            <p class="text-gray-500 text-sm lang-en">Calculus, vectors, matrices, complex numbers — university-preparatory STEM track.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-purple-100 card-hover">
+        <div class="flex items-start gap-4">
+          <div class="w-14 h-14 bg-violet-100 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">📕</div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-bold bg-violet-100 text-violet-700 px-2 py-0.5 rounded-full">SC07</span>
+              <span class="text-xs text-purple-600 font-medium lang-zh">理科</span>
+              <span class="text-xs text-purple-600 font-medium lang-en">Science</span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-1">
+              <span class="lang-zh">高级数学 (II)</span>
+              <span class="lang-en">Advanced Mathematics (II)</span>
+            </h3>
+            <p class="text-gray-500 text-sm lang-zh">概率分布、统计推断、数值方法——与 SC06 并修，深化理科数学能力。</p>
+            <p class="text-gray-500 text-sm lang-en">Probability distributions, statistical inference, numerical methods — taken alongside SC06.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- JE04 Coming Soon -->
+      <div class="sm:col-span-2 bg-gray-50 rounded-2xl p-6 border-2 border-dashed border-gray-200 relative overflow-hidden">
+        <div class="absolute top-3 right-3">
+          <span class="text-xs font-bold bg-duck-400 text-gray-900 px-2.5 py-1 rounded-full lang-zh">即将推出</span>
+          <span class="text-xs font-bold bg-duck-400 text-gray-900 px-2.5 py-1 rounded-full lang-en">Coming Soon</span>
+        </div>
+        <div class="flex items-start gap-4 opacity-60">
+          <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">📓</div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">JE04</span>
+            </div>
+            <h3 class="font-bold text-gray-700 mb-1">
+              <span class="lang-zh">初中数学</span>
+              <span class="lang-en">Lower Secondary Mathematics</span>
+            </h3>
+            <p class="text-gray-400 text-sm lang-zh">初中数学题库（JE04）正在整理中，敬请期待！打好初中根基，迎战高中统考。</p>
+            <p class="text-gray-400 text-sm lang-en">JE04 lower secondary question bank coming soon — build your foundations before tackling UEC upper secondary.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     DONG ZONG NEWS  — Authority / Trust signal
+     Lazy-loaded — does not block page render
+════════════════════════════════════════════════════════ -->
+<section id="dongjong" class="py-20 px-4 bg-white">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-8 h-8 bg-red-600 rounded flex items-center justify-center text-white font-black text-sm">董</div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900">
+            <span class="lang-zh">董总最新动态</span>
+            <span class="lang-en">Dong Zong Latest News</span>
+          </h2>
+        </div>
+        <p class="text-gray-500 text-sm">
+          <span class="lang-zh">实时同步独中统考考纲变动及重要公告</span>
+          <span class="lang-en">Syllabus updates and key announcements from the United Chinese School Committees' Association</span>
+        </p>
+      </div>
+      <a href="https://www.dongzong.my/news-zh/" target="_blank" rel="noopener"
+         class="flex-shrink-0 text-sm text-brand-600 font-semibold hover:underline flex items-center gap-1">
+        <span class="lang-zh">前往董总官网</span>
+        <span class="lang-en">Visit Dong Zong</span>
+        <span>↗</span>
+      </a>
+    </div>
+
+    <!-- News grid (lazy-loaded) -->
+    <div id="news-container" class="space-y-3">
+      <div class="news-item pl-4 py-3 bg-gray-50 rounded-r-xl animate-pulse" id="news-placeholder">
+        <div class="h-3 bg-gray-200 rounded w-24 mb-2"></div>
+        <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+      </div>
+    </div>
+
+    <!-- Quick links (always visible) -->
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <a href="https://uec.dongzong.my/exam-info/examination-outline" target="_blank" rel="noopener"
+         class="flex items-center gap-3 bg-blue-50 hover:bg-blue-100 rounded-xl px-4 py-3 transition-colors group">
+        <span class="text-2xl">📋</span>
+        <div>
+          <div class="font-semibold text-sm text-gray-900 group-hover:text-blue-700 lang-zh">统考数学考纲</div>
+          <div class="font-semibold text-sm text-gray-900 group-hover:text-blue-700 lang-en">UEC Math Syllabus</div>
+          <div class="text-xs text-gray-400">SC04 / SC05 / SC06 / SC07</div>
+        </div>
+      </a>
+      <a href="https://www.dongzong.my/news-zh/" target="_blank" rel="noopener"
+         class="flex items-center gap-3 bg-red-50 hover:bg-red-100 rounded-xl px-4 py-3 transition-colors group">
+        <span class="text-2xl">📰</span>
+        <div>
+          <div class="font-semibold text-sm text-gray-900 group-hover:text-red-700 lang-zh">董总新闻公告</div>
+          <div class="font-semibold text-sm text-gray-900 group-hover:text-red-700 lang-en">Dong Zong News</div>
+          <div class="text-xs text-gray-400 lang-zh">最新政策与教育资讯</div>
+          <div class="text-xs text-gray-400 lang-en">Latest policies &amp; updates</div>
+        </div>
+      </a>
+      <a href="https://uec.dongzong.my/exam-info/timetable" target="_blank" rel="noopener"
+         class="flex items-center gap-3 bg-green-50 hover:bg-green-100 rounded-xl px-4 py-3 transition-colors group">
+        <span class="text-2xl">📅</span>
+        <div>
+          <div class="font-semibold text-sm text-gray-900 group-hover:text-green-700 lang-zh">统考考试日历</div>
+          <div class="font-semibold text-sm text-gray-900 group-hover:text-green-700 lang-en">UEC Exam Calendar</div>
+          <div class="text-xs text-gray-400 lang-zh">重要考试日期</div>
+          <div class="text-xs text-gray-400 lang-en">Key exam dates</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     BLOG PREVIEW  — SEO + authority
+════════════════════════════════════════════════════════ -->
 <section class="py-20 px-4 bg-gray-50">
   <div class="max-w-5xl mx-auto">
     <div class="flex items-center justify-between mb-10">
@@ -540,7 +731,7 @@
           <div class="text-xs text-brand-600 font-semibold uppercase tracking-wide mb-2 lang-zh">统考攻略</div>
           <div class="text-xs text-brand-600 font-semibold uppercase tracking-wide mb-2 lang-en">Exam Guide</div>
           <h3 class="font-bold text-gray-900 mb-2 leading-snug lang-zh">统考高中数学：10 大必考考点全攻略</h3>
-          <h3 class="font-bold text-gray-900 mb-2 leading-snug lang-en">UEC Add Maths: 10 Topics You Must Master</h3>
+          <h3 class="font-bold text-gray-900 mb-2 leading-snug lang-en">UEC Maths: 10 Topics You Must Master</h3>
         </div>
       </a>
       <a href="blog/effective-math-study.html" class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 block">
@@ -565,27 +756,42 @@
   </div>
 </section>
 
-<!-- ── CTA ────────────────────────────────────────────────────────────────── -->
+
+<!-- ═══════════════════════════════════════════════════════
+     FINAL DUAL CTA  — ACTION
+     Two clear paths: student register + teacher contact
+════════════════════════════════════════════════════════ -->
 <section class="py-24 px-4 gradient-hero text-white text-center">
-  <div class="max-w-2xl mx-auto">
+  <div class="max-w-3xl mx-auto">
     <div class="text-6xl mb-6">🦆</div>
     <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">
       <span class="lang-zh">准备好开始你的鸭子修炼之路了吗？</span>
-      <span class="lang-en">Ready to Start Your Duck Journey?</span>
+      <span class="lang-en">Ready to start your duck journey?</span>
     </h2>
     <p class="text-blue-100 text-lg mb-10">
-      <span class="lang-zh">加入数百位独中生，用 AI 练得更聪明。完全免费。</span>
-      <span class="lang-en">Join hundreds of 独中 students practising smarter with AI. Completely free to start.</span>
+      <span class="lang-zh">加入数百位独中生，用 AI 练得更聪明。完全免费，注册即用。</span>
+      <span class="lang-en">Join hundreds of 独中 students practising smarter with AI. Free, no setup needed.</span>
     </p>
-    <a href="https://uecstudent.streamlit.app" target="_blank"
-       class="inline-block bg-duck-400 hover:bg-duck-500 text-gray-900 font-bold px-10 py-4 rounded-full text-lg shadow-xl transition-colors">
-      <span class="lang-zh">免费注册 →</span>
-      <span class="lang-en">Create Free Account →</span>
-    </a>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://uecstudent.streamlit.app" target="_blank"
+         class="bg-duck-400 hover:bg-duck-500 text-gray-900 font-bold px-10 py-4 rounded-full text-lg shadow-xl transition-colors">
+        <span class="lang-zh">🦆 学生免费注册</span>
+        <span class="lang-en">🦆 Students — Sign Up Free</span>
+      </a>
+      <a href="mailto:customer.service@tinktech.com.my?subject=老师申请 DuckMath 课室账号"
+         class="bg-white/15 hover:bg-white/25 text-white font-semibold px-10 py-4 rounded-full text-lg transition-colors border border-white/40">
+        <span class="lang-zh">👩‍🏫 老师申请账号</span>
+        <span class="lang-en">👩‍🏫 Teacher — Request Access</span>
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- ── Footer ─────────────────────────────────────────────────────────────── -->
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════ -->
 <footer class="bg-gray-900 text-gray-400 py-12 px-4">
   <div class="max-w-6xl mx-auto">
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-10">
@@ -602,7 +808,8 @@
         <div class="text-white font-semibold mb-3 text-sm lang-zh">平台</div>
         <div class="text-white font-semibold mb-3 text-sm lang-en">Platform</div>
         <ul class="space-y-2 text-sm">
-          <li><a href="#features" class="hover:text-white transition-colors lang-zh">功能介绍</a><a href="#features" class="hover:text-white transition-colors lang-en">Features</a></li>
+          <li><a href="#for-students" class="hover:text-white transition-colors lang-zh">学生功能</a><a href="#for-students" class="hover:text-white transition-colors lang-en">For Students</a></li>
+          <li><a href="#for-teachers" class="hover:text-white transition-colors lang-zh">老师功能</a><a href="#for-teachers" class="hover:text-white transition-colors lang-en">For Teachers</a></li>
           <li><a href="#syllabus" class="hover:text-white transition-colors lang-zh">考纲对应</a><a href="#syllabus" class="hover:text-white transition-colors lang-en">Syllabus</a></li>
           <li><a href="https://uecstudent.streamlit.app" target="_blank" class="hover:text-white transition-colors lang-zh">进入平台</a><a href="https://uecstudent.streamlit.app" target="_blank" class="hover:text-white transition-colors lang-en">Launch App</a></li>
         </ul>
@@ -633,9 +840,12 @@
   </div>
 </footer>
 
-<!-- ── Scripts ────────────────────────────────────────────────────────────── -->
+
+<!-- ═══════════════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════════════════ -->
 <script>
-// ── Language toggle ──────────────────────────────────────────────────────────
+// ── Language toggle ──────────────────────────────────────
 function setLang(lang) {
   document.documentElement.lang = lang;
   document.getElementById('btn-zh').className = lang === 'zh'
@@ -646,25 +856,39 @@ function setLang(lang) {
     : 'px-3 py-1.5 lang-btn-inactive transition-colors';
   localStorage.setItem('duckmath_lang', lang);
 }
-// Restore saved language preference
 const savedLang = localStorage.getItem('duckmath_lang');
 if (savedLang) setLang(savedLang);
 
-// ── Dong Zong RSS news fetch ─────────────────────────────────────────────────
-// Uses rss2json free tier to fetch dongzong.my RSS (CORS-safe)
+// ── Dong Zong RSS — lazy-loaded via IntersectionObserver ─
+let newsLoaded = false;
+const newsObserver = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting && !newsLoaded) {
+    newsLoaded = true;
+    loadDongZongNews();
+    newsObserver.disconnect();
+  }
+}, { rootMargin: '200px' });
+
+const newsSection = document.getElementById('dongjong');
+if (newsSection) newsObserver.observe(newsSection);
+
 async function loadDongZongNews() {
   const RSS_URL = 'https://www.dongzong.my/news-zh/feed/';
   const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}&count=5`;
   try {
     const res = await fetch(API_URL, { signal: AbortSignal.timeout(6000) });
     const data = await res.json();
-    if (data.status !== 'ok' || !data.items?.length) return; // keep fallback
+    if (data.status !== 'ok' || !data.items?.length) {
+      showNewsFallback();
+      return;
+    }
     const container = document.getElementById('news-container');
-    const lang = document.documentElement.lang;
     container.innerHTML = data.items.map(item => {
-      const date = item.pubDate ? new Date(item.pubDate).toLocaleDateString('zh-MY', { year:'numeric', month:'short', day:'numeric' }) : '';
+      const date = item.pubDate
+        ? new Date(item.pubDate).toLocaleDateString('zh-MY', { year:'numeric', month:'short', day:'numeric' })
+        : '';
       const title = item.title || '';
-      const link = item.link || 'https://www.dongzong.my';
+      const link  = item.link  || 'https://www.dongzong.my';
       return `
         <a href="${link}" target="_blank" rel="noopener"
            class="news-item pl-4 py-3 bg-gray-50 hover:bg-blue-50 rounded-r-xl block transition-colors group">
@@ -672,12 +896,19 @@ async function loadDongZongNews() {
           <p class="font-semibold text-gray-900 text-sm group-hover:text-brand-700 transition-colors leading-snug">${title}</p>
         </a>`;
     }).join('');
-  } catch (e) {
-    // Network error or timeout — static fallback stays visible
-    console.log('Dong Zong RSS unavailable, showing static fallback');
+  } catch {
+    showNewsFallback();
   }
 }
-loadDongZongNews();
+
+function showNewsFallback() {
+  const container = document.getElementById('news-container');
+  container.innerHTML = `
+    <div class="news-item pl-4 py-3 bg-gray-50 rounded-r-xl">
+      <p class="font-semibold text-gray-700 text-sm lang-zh">暂时无法载入董总公告，请直接前往董总官网查阅。</p>
+      <p class="font-semibold text-gray-700 text-sm lang-en">Could not load Dong Zong news. Please visit dongzong.my directly.</p>
+    </div>`;
+}
 </script>
 
 </body>
