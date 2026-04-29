@@ -73,6 +73,25 @@
     /* Tab active state */
     .tab-active { background: #2563eb; color: white; }
     .tab-inactive { background: white; color: #6b7280; border: 1px solid #e5e7eb; }
+
+    /* ── Hero Carousel ── */
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .carousel-slide {
+      min-width: 100%;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+    .carousel-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      cursor: pointer; transition: background 0.3s, transform 0.3s;
+    }
+    .carousel-dot.active {
+      background: #fbbf24; transform: scale(1.3);
+    }
   </style>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8007778449006887" crossorigin="anonymous"></script>
@@ -107,6 +126,12 @@
       <a href="blog/index.html" class="hover:text-brand-600 transition-colors lang-zh">博客</a>
       <a href="blog/index.html" class="hover:text-brand-600 transition-colors lang-en">Blog</a>
 
+      <a href="wiki.html" class="hover:text-brand-600 transition-colors font-semibold lang-zh" style="color:#2563eb;">数学宝典 ✨</a>
+      <a href="wiki.html" class="hover:text-brand-600 transition-colors font-semibold lang-en" style="color:#2563eb;">Math Wiki ✨</a>
+
+      <a href="questions/index.html" class="hover:text-brand-600 transition-colors lang-zh">题库</a>
+      <a href="questions/index.html" class="hover:text-brand-600 transition-colors lang-en">Questions</a>
+
       <a href="about.html" class="hover:text-brand-600 transition-colors lang-zh">关于</a>
       <a href="about.html" class="hover:text-brand-600 transition-colors lang-en">About</a>
     </div>
@@ -134,71 +159,123 @@
 
 
 <!-- ═══════════════════════════════════════════════════════
-     HERO  — ATTENTION
-     Goal: grab attention immediately, dual path for student & teacher
+     HERO CAROUSEL  — replaces static hero
 ════════════════════════════════════════════════════════ -->
-<section class="gradient-hero text-white py-24 px-4 overflow-hidden">
-  <div class="max-w-4xl mx-auto text-center">
+<div class="gradient-hero overflow-hidden" id="carousel-viewport"
+     onmouseenter="stopCarousel()" onmouseleave="startCarousel()">
 
-    <!-- Badge -->
-    <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6 fade-up">
-      <span>🏫</span>
-      <span class="lang-zh">专为马来西亚独中统考生设计</span>
-      <span class="lang-en">Built for Malaysian 独中 UEC Students</span>
-    </div>
+  <div id="carousel-track" class="carousel-track">
 
-    <!-- Headline -->
-    <h1 class="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-6 fade-up delay-1">
-      <span class="lang-zh">练好数学，<br/><span class="text-duck-400">开启修仙路。</span></span>
-      <span class="lang-en">Practice Math.<br/><span class="text-duck-400">Start Your Immortal Journey.</span></span>
-    </h1>
-
-    <!-- Subtext -->
-    <p class="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto mb-2 fade-up delay-2">
-      <span class="lang-zh">专为统考 SC04 / SC05 / SC06 / SC07 打造。AI 即时批改、错题记录、每天打卡——成绩看得见。</span>
-      <span class="lang-en">Built for UEC SC04 / SC05 / SC06 / SC07. AI grading, mistake vault, daily streaks — progress you can measure.</span>
-    </p>
-    <p class="text-sm text-blue-200 mb-10 fade-up delay-2">
-      <span class="lang-zh">根据最新董总数学考纲 · 免费使用</span>
-      <span class="lang-en">Aligned with the latest Dong Zong syllabus · Free to use</span>
-    </p>
-
-    <!-- Dual CTA -->
-    <div class="flex flex-col sm:flex-row gap-4 justify-center fade-up delay-3">
-      <!-- Student CTA -->
-      <a href="https://uecstudent.streamlit.app" target="_blank"
-         class="bg-duck-400 hover:bg-duck-500 text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-lg transition-colors">
-        <span class="lang-zh">🦆 学生免费开始</span>
-        <span class="lang-en">🦆 Students — Start Free</span>
-      </a>
-      <!-- Teacher CTA -->
-      <a href="#for-teachers"
-         class="bg-white/15 hover:bg-white/25 text-white font-semibold px-8 py-4 rounded-full text-lg transition-colors border border-white/40">
-        <span class="lang-zh">👩‍🏫 我是老师 →</span>
-        <span class="lang-en">👩‍🏫 I'm a Teacher →</span>
-      </a>
-    </div>
-
-    <!-- Trust stats -->
-    <div class="mt-16 grid grid-cols-3 gap-8 max-w-md mx-auto fade-up delay-3">
-      <div>
-        <div class="text-3xl font-extrabold text-duck-400">10K+</div>
-        <div class="text-blue-200 text-xs mt-1 lang-zh">已解答题目</div>
-        <div class="text-blue-200 text-xs mt-1 lang-en">Questions Solved</div>
-      </div>
-      <div>
-        <div class="text-3xl font-extrabold text-duck-400">4</div>
-        <div class="text-blue-200 text-xs mt-1 lang-zh">统考科目</div>
-        <div class="text-blue-200 text-xs mt-1 lang-en">UEC Subjects</div>
-      </div>
-      <div>
-        <div class="text-3xl font-extrabold text-duck-400">100%</div>
-        <div class="text-blue-200 text-xs mt-1 lang-zh">免费使用</div>
-        <div class="text-blue-200 text-xs mt-1 lang-en">Free to Use</div>
+    <!-- ── Slide 1: 鸭鸭数学介绍（主 Hero） ── -->
+    <div class="carousel-slide py-20 px-4 text-white text-center">
+      <div class="max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6 fade-up">
+          <span>🏫</span>
+          <span class="lang-zh">专为马来西亚独中统考生设计</span>
+          <span class="lang-en">Built for Malaysian 独中 UEC Students</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-6">
+          <span class="lang-zh">练好数学，<br/><span class="text-duck-400">开启修仙路。</span></span>
+          <span class="lang-en">Practice Math.<br/><span class="text-duck-400">Start Your Immortal Journey.</span></span>
+        </h1>
+        <p class="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto mb-2">
+          <span class="lang-zh">专为统考 SC04 / SC05 / SC06 / SC07 打造。AI 即时批改、错题记录、每天打卡——成绩看得见。</span>
+          <span class="lang-en">Built for UEC SC04–SC07. AI grading, mistake vault, daily streaks — progress you can measure.</span>
+        </p>
+        <p class="text-sm text-blue-200 mb-10">
+          <span class="lang-zh">根据最新董总数学考纲 · 免费使用</span>
+          <span class="lang-en">Aligned with the latest Dong Zong syllabus · Free to use</span>
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://uecstudent.streamlit.app" target="_blank"
+             class="bg-duck-400 hover:bg-duck-500 text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-lg transition-colors">
+            <span class="lang-zh">🦆 学生免费开始</span>
+            <span class="lang-en">🦆 Students — Start Free</span>
+          </a>
+          <a href="#for-teachers"
+             class="bg-white/15 hover:bg-white/25 text-white font-semibold px-8 py-4 rounded-full text-lg transition-colors border border-white/40">
+            <span class="lang-zh">👩‍🏫 我是老师 →</span>
+            <span class="lang-en">👩‍🏫 I'm a Teacher →</span>
+          </a>
+        </div>
+        <div class="mt-14 grid grid-cols-3 gap-8 max-w-md mx-auto">
+          <div><div class="text-3xl font-extrabold text-duck-400">10K+</div><div class="text-blue-200 text-xs mt-1 lang-zh">已解答题目</div><div class="text-blue-200 text-xs mt-1 lang-en">Questions Solved</div></div>
+          <div><div class="text-3xl font-extrabold text-duck-400">4</div><div class="text-blue-200 text-xs mt-1 lang-zh">统考科目</div><div class="text-blue-200 text-xs mt-1 lang-en">UEC Subjects</div></div>
+          <div><div class="text-3xl font-extrabold text-duck-400">100%</div><div class="text-blue-200 text-xs mt-1 lang-zh">免费使用</div><div class="text-blue-200 text-xs mt-1 lang-en">Free to Use</div></div>
+        </div>
       </div>
     </div>
+
+    <!-- ── Slide 2: 数学宝典 ── -->
+    <div class="carousel-slide py-20 px-4 text-white text-center">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-6xl mb-6">📖</div>
+        <div class="text-xs font-mono text-duck-300 tracking-widest mb-3 lang-zh">最新上线 · UEC 数学宝典</div>
+        <div class="text-xs font-mono text-duck-300 tracking-widest mb-3 lang-en">NEW · UEC MATH WIKI</div>
+        <h2 class="text-3xl sm:text-4xl font-black mb-3 lang-zh">宝典在手，A+ 我有 🏆</h2>
+        <h2 class="text-3xl sm:text-4xl font-black mb-3 lang-en">Your UEC Math Study Guide 🏆</h2>
+        <p class="text-blue-100 mb-8 leading-relaxed lang-zh">SC07 · 微积分单元讲义刚刚上线！含公式、例题、常见错误详解。持续更新 SC04–SC07 所有章节。</p>
+        <p class="text-blue-100 mb-8 leading-relaxed lang-en">SC07 Calculus unit notes just launched! Formulas, worked examples, and common mistake analysis. All chapters coming soon.</p>
+        <a href="wiki.html" class="inline-block bg-duck-400 hover:bg-duck-500 text-gray-900 font-bold px-8 py-4 rounded-full text-lg transition-colors shadow-lg lang-zh">查看数学宝典 →</a>
+        <a href="wiki.html" class="inline-block bg-duck-400 hover:bg-duck-500 text-gray-900 font-bold px-8 py-4 rounded-full text-lg transition-colors shadow-lg lang-en">View Math Wiki →</a>
+      </div>
+    </div>
+
+    <!-- ── Slide 3: 博客 ── -->
+    <div class="carousel-slide py-20 px-4 text-white text-center">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-6xl mb-6">📝</div>
+        <div class="text-xs font-mono text-duck-300 tracking-widest mb-3 lang-zh">博客最新文章</div>
+        <div class="text-xs font-mono text-duck-300 tracking-widest mb-3 lang-en">LATEST FROM BLOG</div>
+        <h2 class="text-3xl sm:text-4xl font-black mb-3 lang-zh">如何在一个月内<br/>提升 UEC 数学成绩？</h2>
+        <h2 class="text-3xl sm:text-4xl font-black mb-3 lang-en">How to Improve UEC Math<br/>in One Month?</h2>
+        <p class="text-blue-100 mb-8 leading-relaxed lang-zh">三步备考法 + 题型分析，学长亲测有效的复习策略。</p>
+        <p class="text-blue-100 mb-8 leading-relaxed lang-en">A 3-step revision method + question type breakdown, battle-tested by seniors.</p>
+        <a href="blog/index.html" class="inline-block border-2 border-white/60 hover:bg-white/15 text-white font-bold px-8 py-4 rounded-full text-lg transition-colors lang-zh">阅读全文 →</a>
+        <a href="blog/index.html" class="inline-block border-2 border-white/60 hover:bg-white/15 text-white font-bold px-8 py-4 rounded-full text-lg transition-colors lang-en">Read More →</a>
+      </div>
+    </div>
+
+    <!-- ── Slide 4: 本周排行 ── -->
+    <div class="carousel-slide py-20 px-4 text-white text-center">
+      <div class="max-w-sm mx-auto">
+        <div class="text-6xl mb-6">🏆</div>
+        <div class="text-xs font-mono text-duck-300 tracking-widest mb-3 lang-zh">本周答题王</div>
+        <div class="text-xs font-mono text-duck-300 tracking-widest mb-3 lang-en">THIS WEEK'S TOP STUDENTS</div>
+        <h2 class="text-3xl font-black mb-6 lang-zh">谁是本周修仙冠军？</h2>
+        <h2 class="text-3xl font-black mb-6 lang-en">Who's This Week's Champion?</h2>
+        <div class="space-y-3 mb-8">
+          <div class="flex items-center justify-between bg-white/15 rounded-xl px-4 py-3">
+            <span class="font-semibold">🥇 <span class="lang-zh">同学 A</span><span class="lang-en">Student A</span></span>
+            <span class="font-mono text-duck-300 lang-zh">342 题</span><span class="font-mono text-duck-300 lang-en">342 Q</span>
+          </div>
+          <div class="flex items-center justify-between bg-white/10 rounded-xl px-4 py-3">
+            <span class="font-semibold">🥈 <span class="lang-zh">同学 B</span><span class="lang-en">Student B</span></span>
+            <span class="font-mono text-duck-300 lang-zh">289 题</span><span class="font-mono text-duck-300 lang-en">289 Q</span>
+          </div>
+          <div class="flex items-center justify-between bg-white/10 rounded-xl px-4 py-3">
+            <span class="font-semibold">🥉 <span class="lang-zh">同学 C</span><span class="lang-en">Student C</span></span>
+            <span class="font-mono text-duck-300 lang-zh">251 题</span><span class="font-mono text-duck-300 lang-en">251 Q</span>
+          </div>
+        </div>
+        <a href="https://uecstudent.streamlit.app" target="_blank"
+           class="inline-block bg-duck-400 hover:bg-duck-500 text-gray-900 font-bold px-8 py-4 rounded-full text-lg transition-colors shadow-lg lang-zh">登入查看完整排行 →</a>
+        <a href="https://uecstudent.streamlit.app" target="_blank"
+           class="inline-block bg-duck-400 hover:bg-duck-500 text-gray-900 font-bold px-8 py-4 rounded-full text-lg transition-colors shadow-lg lang-en">Log In to See Full Ranking →</a>
+      </div>
+    </div>
+
+  </div><!-- /carousel-track -->
+
+  <!-- Dots -->
+  <div class="flex justify-center gap-2 pb-8">
+    <button class="carousel-dot active" onclick="goSlide(0)"></button>
+    <button class="carousel-dot" onclick="goSlide(1)"></button>
+    <button class="carousel-dot" onclick="goSlide(2)"></button>
+    <button class="carousel-dot" onclick="goSlide(3)"></button>
   </div>
-</section>
+
+</div><!-- /carousel-viewport -->
 
 
 <!-- ═══════════════════════════════════════════════════════
@@ -845,6 +922,35 @@
      SCRIPTS
 ════════════════════════════════════════════════════════ -->
 <script>
+// ── Hero Carousel ────────────────────────────────────────
+let currentSlide = 0;
+const totalSlides = 4;
+let carouselTimer = null;
+
+function goSlide(n) {
+  currentSlide = (n + totalSlides) % totalSlides;
+  document.getElementById('carousel-track').style.transform = `translateX(-${currentSlide * 100}%)`;
+  document.querySelectorAll('.carousel-dot').forEach((d, i) =>
+    d.classList.toggle('active', i === currentSlide));
+}
+
+function nextSlide() { goSlide(currentSlide + 1); }
+
+function startCarousel() {
+  carouselTimer = setInterval(nextSlide, 5000);
+}
+
+function stopCarousel() {
+  clearInterval(carouselTimer);
+}
+
+const viewport = document.getElementById('carousel-viewport');
+if (viewport) {
+  viewport.addEventListener('mouseenter', stopCarousel);
+  viewport.addEventListener('mouseleave', startCarousel);
+  startCarousel();
+}
+
 // ── Language toggle ──────────────────────────────────────
 function setLang(lang) {
   document.documentElement.lang = lang;

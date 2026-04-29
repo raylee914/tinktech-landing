@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UEC 数学宝典 – 独中统考数学讲义 SC04 SC05 SC06 SC07 | 鸭鸭数学</title>
+  <meta name="description" content="独中统考数学免费讲义库。涵盖 SC04、SC05、SC06、SC07 各章节知识点、公式、例题与常见错误。宝典在手，A+ 我有。" />
+  <meta name="keywords" content="独中数学讲义, SC07微积分, SC05三角函数, 统考数学笔记, UEC maths notes, 董总数学考纲" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- KaTeX for math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Noto Sans SC', 'Inter', 'sans-serif'] },
+          colors: {
+            brand: { 50:'#eff6ff', 100:'#dbeafe', 500:'#3b82f6', 600:'#2563eb', 700:'#1d4ed8', 800:'#1e40af' },
+            duck:  { 300:'#fcd34d', 400:'#fbbf24', 500:'#f59e0b' },
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    html[lang="en"] .lang-zh { display: none !important; }
+    html[lang="zh"] .lang-en { display: none !important; }
+    .lang-btn-active   { background: #2563eb; color: white; }
+    .lang-btn-inactive { background: transparent; color: #6b7280; }
+
+    /* Subject tabs */
+    .subj-tab { cursor:pointer; padding:8px 20px; border-radius:9999px; font-weight:600; font-size:14px; transition:all 0.2s; border:2px solid transparent; }
+    .subj-tab.active { background:#2563eb; color:white; }
+    .subj-tab.inactive { background:white; color:#6b7280; border-color:#e5e7eb; }
+    .subj-tab.inactive:hover { border-color:#2563eb; color:#2563eb; }
+
+    /* Unit list */
+    .unit-row { display:flex; align-items:center; justify-content:space-between; padding:14px 18px; border-radius:12px; margin-bottom:8px; border:1px solid #e5e7eb; background:white; transition:all 0.2s; cursor:pointer; }
+    .unit-row:hover { border-color:#2563eb; background:#eff6ff; }
+    .unit-row.coming-soon { opacity:0.5; cursor:default; }
+    .unit-row.coming-soon:hover { border-color:#e5e7eb; background:white; }
+
+    /* Lecture content */
+    .formula-box { background:#f0f7ff; border-left:4px solid #2563eb; border-radius:0 8px 8px 0; padding:16px 20px; margin:16px 0; }
+    .example-box { background:#f0fdf4; border-left:4px solid #16a34a; border-radius:0 8px 8px 0; padding:16px 20px; margin:16px 0; }
+    .mistake-box { background:#fff7ed; border-left:4px solid #ea580c; border-radius:0 8px 8px 0; padding:16px 20px; margin:16px 0; }
+    .step { display:flex; gap:12px; margin-bottom:10px; }
+    .step-num { width:26px; height:26px; border-radius:50%; background:#2563eb; color:white; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; margin-top:2px; }
+
+    /* Badge */
+    .badge-new { background:#dcfce7; color:#15803d; font-size:11px; font-weight:700; padding:2px 8px; border-radius:999px; }
+    .badge-soon { background:#f3f4f6; color:#9ca3af; font-size:11px; font-weight:600; padding:2px 8px; border-radius:999px; }
+  </style>
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "鸭鸭数学 UEC 数学宝典",
+    "description": "马来西亚独中统考数学免费讲义库，涵盖 SC04、SC05、SC06、SC07",
+    "url": "https://duckmath.tinktech.com.my/wiki.html",
+    "teaches": ["SC04 Mathematics", "SC05 Advanced Mathematics", "SC06 Advanced Mathematics I", "SC07 Advanced Mathematics II"]
+  }
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8007778449006887" crossorigin="anonymous"></script>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+
+
+<!-- NAV (same as index) -->
+<nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="index.html" class="flex items-center gap-2 font-bold text-xl text-brand-800">
+      <span class="text-2xl">🦆</span>
+      <span class="lang-zh">鸭鸭数学</span>
+      <span class="lang-en">DuckMath</span>
+    </a>
+    <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+      <a href="index.html#for-students" class="hover:text-brand-600 transition-colors lang-zh">学生</a>
+      <a href="index.html#for-students" class="hover:text-brand-600 transition-colors lang-en">Students</a>
+      <a href="index.html#for-teachers" class="hover:text-brand-600 transition-colors lang-zh">老师</a>
+      <a href="index.html#for-teachers" class="hover:text-brand-600 transition-colors lang-en">Teachers</a>
+      <a href="index.html#syllabus" class="hover:text-brand-600 transition-colors lang-zh">考纲</a>
+      <a href="index.html#syllabus" class="hover:text-brand-600 transition-colors lang-en">Syllabus</a>
+      <a href="blog/index.html" class="hover:text-brand-600 transition-colors lang-zh">博客</a>
+      <a href="blog/index.html" class="hover:text-brand-600 transition-colors lang-en">Blog</a>
+      <a href="wiki.html" class="font-semibold transition-colors" style="color:#2563eb;">📖 <span class="lang-zh">数学宝典</span><span class="lang-en">Wiki</span></a>
+      <a href="about.html" class="hover:text-brand-600 transition-colors lang-zh">关于</a>
+      <a href="about.html" class="hover:text-brand-600 transition-colors lang-en">About</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="flex items-center border border-gray-200 rounded-full overflow-hidden text-xs font-semibold">
+        <button id="btn-zh" onclick="setLang('zh')" class="px-3 py-1.5 lang-btn-active transition-colors">中文</button>
+        <button id="btn-en" onclick="setLang('en')" class="px-3 py-1.5 lang-btn-inactive transition-colors">EN</button>
+      </div>
+      <a href="https://uecstudent.streamlit.app" target="_blank"
+         class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors shadow-md">
+        <span class="lang-zh">开始练习 →</span>
+        <span class="lang-en">Start Practising →</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<div class="bg-gradient-to-br from-brand-800 to-brand-600 text-white py-14 px-4">
+  <div class="max-w-4xl mx-auto text-center">
+    <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-5">
+      <span>📖</span>
+      <span class="lang-zh">免费数学讲义库 · 持续更新</span>
+      <span class="lang-en">Free Math Study Notes · Continuously Updated</span>
+    </div>
+    <h1 class="text-4xl sm:text-5xl font-black mb-3 leading-tight">
+      <span class="lang-zh">UEC 数学宝典</span>
+      <span class="lang-en">UEC Math Wiki</span>
+    </h1>
+    <p class="text-xl text-duck-300 font-bold mb-4 lang-zh">宝典在手，A+ 我有 🏆</p>
+    <p class="text-xl text-duck-300 font-bold mb-4 lang-en">Master the Notes, Own the A+ 🏆</p>
+    <p class="text-blue-100 max-w-2xl mx-auto lang-zh">涵盖 SC04 / SC05 / SC06 / SC07 全部章节。每个单元含知识点精讲、关键公式、例题详解与常见错误分析。</p>
+    <p class="text-blue-100 max-w-2xl mx-auto lang-en">Covers all chapters of SC04 / SC05 / SC06 / SC07. Each unit includes concept notes, key formulas, worked examples, and common mistake analysis.</p>
+  </div>
+</div>
+
+
+<!-- SUBJECT TABS + CONTENT -->
+<div class="max-w-5xl mx-auto px-4 py-10">
+
+  <!-- Tabs -->
+  <div class="flex flex-wrap gap-2 mb-8 justify-center">
+    <button class="subj-tab active" id="tab-sc07" onclick="switchSubject('sc07')">SC07 高级数学 II</button>
+    <button class="subj-tab inactive" id="tab-sc06" onclick="switchSubject('sc06')">SC06 高级数学 I</button>
+    <button class="subj-tab inactive" id="tab-sc05" onclick="switchSubject('sc05')">SC05 高级数学</button>
+    <button class="subj-tab inactive" id="tab-sc04" onclick="switchSubject('sc04')">SC04 数学</button>
+  </div>
+
+  <!-- ══ SC07 ══ -->
+  <div id="content-sc07">
+    <p class="text-sm text-gray-500 mb-6 lang-zh">📌 SC07 高级数学 II — 统考最难科目，本宝典优先覆盖。</p>
+    <p class="text-sm text-gray-500 mb-6 lang-en">📌 SC07 Advanced Mathematics II — hardest UEC subject. Notes prioritised here.</p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- Unit list (left) -->
+      <div class="md:col-span-1">
+        <h2 class="font-bold text-gray-700 text-sm uppercase tracking-wider mb-3 lang-zh">章节列表</h2>
+        <h2 class="font-bold text-gray-700 text-sm uppercase tracking-wider mb-3 lang-en">Unit List</h2>
+
+        <div class="unit-row" onclick="showUnit('sc07-u1')" id="row-sc07-u1" style="border-color:#2563eb;background:#eff6ff;">
+          <div>
+            <div class="font-semibold text-sm lang-zh">第1章 · 微分</div>
+            <div class="font-semibold text-sm lang-en">Unit 1 · Differentiation</div>
+            <div class="text-xs text-gray-400 mt-0.5">Differentiation</div>
+          </div>
+          <span class="badge-new lang-zh">已上线</span>
+          <span class="badge-new lang-en">Live</span>
+        </div>
+
+        <div class="unit-row coming-soon">
+          <div>
+            <div class="font-semibold text-sm lang-zh">第2章 · 积分</div>
+            <div class="font-semibold text-sm lang-en">Unit 2 · Integration</div>
+            <div class="text-xs text-gray-400 mt-0.5">Integration</div>
+          </div>
+          <span class="badge-soon">Soon</span>
+        </div>
+
+        <div class="unit-row coming-soon">
+          <div>
+            <div class="font-semibold text-sm lang-zh">第3章 · 数列与级数</div>
+            <div class="font-semibold text-sm lang-en">Unit 3 · Sequences & Series</div>
+          </div>
+          <span class="badge-soon">Soon</span>
+        </div>
+
+        <div class="unit-row coming-soon">
+          <div>
+            <div class="font-semibold text-sm lang-zh">第4章 · 向量</div>
+            <div class="font-semibold text-sm lang-en">Unit 4 · Vectors</div>
+          </div>
+          <span class="badge-soon">Soon</span>
+        </div>
+
+        <div class="unit-row coming-soon">
+          <div>
+            <div class="font-semibold text-sm lang-zh">第5章 · 复数</div>
+            <div class="font-semibold text-sm lang-en">Unit 5 · Complex Numbers</div>
+          </div>
+          <span class="badge-soon">Soon</span>
+        </div>
+
+        <a href="https://uecstudent.streamlit.app" target="_blank"
+           class="block mt-6 text-center bg-duck-400 hover:bg-duck-500 text-gray-900 font-bold px-4 py-3 rounded-xl text-sm transition-colors shadow">
+          <span class="lang-zh">🦆 去做题巩固 →</span>
+          <span class="lang-en">🦆 Practice Questions →</span>
+        </a>
+      </div>
+
+      <!-- Unit content (right) -->
+      <div class="md:col-span-2" id="unit-content">
+
+        <!-- SC07 Unit 1: Differentiation -->
+        <div id="sc07-u1">
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+
+            <div class="flex items-center gap-3 mb-1">
+              <span class="text-2xl">📐</span>
+              <div>
+                <div class="text-xs text-brand-600 font-mono tracking-widest">SC07 · UNIT 1</div>
+                <h2 class="text-2xl font-black lang-zh">微分</h2>
+                <h2 class="text-2xl font-black lang-en">Differentiation</h2>
+              </div>
+            </div>
+            <div class="text-sm text-gray-400 mb-6 lang-zh">难度：★★★★☆ · 预备知识：代数、极限基础</div>
+            <div class="text-sm text-gray-400 mb-6 lang-en">Difficulty: ★★★★☆ · Prerequisites: Algebra, Basic Limits</div>
+
+            <!-- 知识点 -->
+            <h3 class="font-bold text-lg mb-3 lang-zh">📌 核心概念</h3>
+            <h3 class="font-bold text-lg mb-3 lang-en">📌 Core Concepts</h3>
+            <p class="text-gray-700 leading-relaxed mb-4 lang-zh">微分（Differentiation）是求函数变化率的运算。导数 $f'(x)$ 表示函数 $f(x)$ 在 $x$ 处的瞬时变化率，几何上即切线的斜率。</p>
+            <p class="text-gray-700 leading-relaxed mb-4 lang-en">Differentiation finds the rate of change of a function. The derivative $f'(x)$ represents the instantaneous rate of change of $f(x)$ at $x$, which geometrically is the slope of the tangent line.</p>
+
+            <!-- 公式 -->
+            <h3 class="font-bold text-lg mb-3 lang-zh">📋 关键公式</h3>
+            <h3 class="font-bold text-lg mb-3 lang-en">📋 Key Formulas</h3>
+
+            <div class="formula-box">
+              <div class="text-sm font-semibold text-brand-700 mb-2 lang-zh">基本求导法则</div>
+              <div class="text-sm font-semibold text-brand-700 mb-2 lang-en">Basic Differentiation Rules</div>
+              <div class="space-y-2 text-sm">
+                <div>幂次法则：$$\frac{d}{dx}[x^n] = nx^{n-1}$$</div>
+                <div>乘积法则：$$\frac{d}{dx}[uv] = u'v + uv'$$</div>
+                <div>商法则：$$\frac{d}{dx}\left[\frac{u}{v}\right] = \frac{u'v - uv'}{v^2}$$</div>
+                <div>链式法则：$$\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}$$</div>
+              </div>
+            </div>
+
+            <div class="formula-box">
+              <div class="text-sm font-semibold text-brand-700 mb-2 lang-zh">常用函数导数</div>
+              <div class="text-sm font-semibold text-brand-700 mb-2 lang-en">Standard Derivatives</div>
+              <div class="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                <div>$\frac{d}{dx}[\sin x] = \cos x$</div>
+                <div>$\frac{d}{dx}[\cos x] = -\sin x$</div>
+                <div>$\frac{d}{dx}[\tan x] = \sec^2 x$</div>
+                <div>$\frac{d}{dx}[e^x] = e^x$</div>
+                <div>$\frac{d}{dx}[\ln x] = \dfrac{1}{x}$</div>
+                <div>$\frac{d}{dx}[a^x] = a^x \ln a$</div>
+              </div>
+            </div>
+
+            <!-- 例题 -->
+            <h3 class="font-bold text-lg mt-6 mb-3 lang-zh">✏️ 例题详解</h3>
+            <h3 class="font-bold text-lg mt-6 mb-3 lang-en">✏️ Worked Examples</h3>
+
+            <div class="example-box">
+              <div class="text-sm font-semibold text-green-700 mb-3 lang-zh">例题 1 — 链式法则应用</div>
+              <div class="text-sm font-semibold text-green-700 mb-3 lang-en">Example 1 — Chain Rule</div>
+              <p class="text-sm text-gray-700 mb-3 lang-zh">求 $y = \sin(3x^2 + 1)$ 的导数。</p>
+              <p class="text-sm text-gray-700 mb-3 lang-en">Find the derivative of $y = \sin(3x^2 + 1)$.</p>
+              <div class="space-y-2">
+                <div class="step">
+                  <div class="step-num">1</div>
+                  <div class="text-sm text-gray-700 lang-zh">设 $u = 3x^2 + 1$，则 $y = \sin u$。</div>
+                  <div class="text-sm text-gray-700 lang-en">Let $u = 3x^2 + 1$, so $y = \sin u$.</div>
+                </div>
+                <div class="step">
+                  <div class="step-num">2</div>
+                  <div class="text-sm text-gray-700 lang-zh">求各部分导数：$\dfrac{dy}{du} = \cos u$，$\dfrac{du}{dx} = 6x$</div>
+                  <div class="text-sm text-gray-700 lang-en">Find each part: $\dfrac{dy}{du} = \cos u$, $\dfrac{du}{dx} = 6x$</div>
+                </div>
+                <div class="step">
+                  <div class="step-num">3</div>
+                  <div class="text-sm text-gray-700 lang-zh">代入链式法则：$$\frac{dy}{dx} = \cos u \cdot 6x = 6x\cos(3x^2+1)$$</div>
+                  <div class="text-sm text-gray-700 lang-en">Apply chain rule: $$\frac{dy}{dx} = \cos u \cdot 6x = 6x\cos(3x^2+1)$$</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="example-box">
+              <div class="text-sm font-semibold text-green-700 mb-3 lang-zh">例题 2 — 乘积法则</div>
+              <div class="text-sm font-semibold text-green-700 mb-3 lang-en">Example 2 — Product Rule</div>
+              <p class="text-sm text-gray-700 mb-3 lang-zh">求 $y = x^2 e^x$ 的导数。</p>
+              <p class="text-sm text-gray-700 mb-3 lang-en">Find the derivative of $y = x^2 e^x$.</p>
+              <div class="space-y-2">
+                <div class="step">
+                  <div class="step-num">1</div>
+                  <div class="text-sm text-gray-700 lang-zh">设 $u = x^2$，$v = e^x$，则 $u' = 2x$，$v' = e^x$。</div>
+                  <div class="text-sm text-gray-700 lang-en">Let $u = x^2$, $v = e^x$, so $u' = 2x$, $v' = e^x$.</div>
+                </div>
+                <div class="step">
+                  <div class="step-num">2</div>
+                  <div class="text-sm text-gray-700 lang-zh">代入乘积法则：$$\frac{dy}{dx} = u'v + uv' = 2xe^x + x^2e^x = xe^x(2+x)$$</div>
+                  <div class="text-sm text-gray-700 lang-en">Apply product rule: $$\frac{dy}{dx} = u'v + uv' = 2xe^x + x^2e^x = xe^x(2+x)$$</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 常见错误 -->
+            <h3 class="font-bold text-lg mt-6 mb-3 lang-zh">⚠️ 常见错误</h3>
+            <h3 class="font-bold text-lg mt-6 mb-3 lang-en">⚠️ Common Mistakes</h3>
+
+            <div class="mistake-box">
+              <ul class="space-y-3 text-sm text-gray-700">
+                <li class="lang-zh">❌ <strong>忘记链式法则</strong>：对复合函数直接求导，漏乘内层导数。如 $\frac{d}{dx}[\sin(3x)] = \cos(3x)$（少乘了 3）。</li>
+                <li class="lang-en">❌ <strong>Forgetting chain rule</strong>: Differentiating composite functions without multiplying by the inner derivative. E.g. writing $\frac{d}{dx}[\sin(3x)] = \cos(3x)$ instead of $3\cos(3x)$.</li>
+                <li class="lang-zh">❌ <strong>乘积法则混淆</strong>：误用 $(uv)' = u'v'$，正确应为 $u'v + uv'$。</li>
+                <li class="lang-en">❌ <strong>Wrong product rule</strong>: Using $(uv)' = u'v'$ instead of $u'v + uv'$.</li>
+                <li class="lang-zh">❌ <strong>$\ln x$ 导数写错</strong>：$\frac{d}{dx}[\ln x] = \frac{1}{x}$，而非 $\frac{1}{\ln x}$。</li>
+                <li class="lang-en">❌ <strong>Wrong $\ln x$ derivative</strong>: $\frac{d}{dx}[\ln x] = \frac{1}{x}$, not $\frac{1}{\ln x}$.</li>
+              </ul>
+            </div>
+
+            <!-- FAQ -->
+            <h3 class="font-bold text-lg mt-6 mb-3 lang-zh">❓ 常见问题</h3>
+            <h3 class="font-bold text-lg mt-6 mb-3 lang-en">❓ FAQ</h3>
+            <div class="space-y-3">
+              <details class="bg-gray-50 rounded-xl px-4 py-3 cursor-pointer">
+                <summary class="font-semibold text-sm text-gray-800 lang-zh">隐函数微分和显函数微分有什么区别？</summary>
+                <summary class="font-semibold text-sm text-gray-800 lang-en">What is the difference between implicit and explicit differentiation?</summary>
+                <p class="text-sm text-gray-600 mt-2 leading-relaxed lang-zh">显函数可以直接写成 $y = f(x)$ 的形式，直接求导即可。隐函数（如 $x^2 + y^2 = 1$）无法直接分离，需对两边同时对 $x$ 求导，并利用链式法则处理含 $y$ 的项（每次出现 $y$ 都要乘 $\frac{dy}{dx}$）。</p>
+                <p class="text-sm text-gray-600 mt-2 leading-relaxed lang-en">An explicit function can be written as $y = f(x)$ and differentiated directly. An implicit function (e.g. $x^2 + y^2 = 1$) cannot be isolated, so you differentiate both sides with respect to $x$, applying the chain rule to any $y$ terms (multiplying by $\frac{dy}{dx}$ each time $y$ appears).</p>
+              </details>
+              <details class="bg-gray-50 rounded-xl px-4 py-3 cursor-pointer">
+                <summary class="font-semibold text-sm text-gray-800 lang-zh">二阶导数是什么？有什么用？</summary>
+                <summary class="font-semibold text-sm text-gray-800 lang-en">What is a second derivative and what is it used for?</summary>
+                <p class="text-sm text-gray-600 mt-2 leading-relaxed lang-zh">二阶导数 $f''(x)$ 是对导数再求一次导。它描述函数的凹凸性：$f''(x) > 0$ 时函数下凸（向上弯），$f''(x) < 0$ 时上凸（向下弯）。在统考中常用于判断极值是极大还是极小。</p>
+                <p class="text-sm text-gray-600 mt-2 leading-relaxed lang-en">The second derivative $f''(x)$ is the derivative of the derivative. It describes the concavity of the function: $f''(x) > 0$ means concave up, $f''(x) < 0$ means concave down. In UEC exams it is commonly used to classify stationary points as maxima or minima.</p>
+              </details>
+            </div>
+
+            <!-- Practice CTA -->
+            <div class="mt-8 p-5 rounded-2xl text-center" style="background:linear-gradient(135deg,#1e40af,#2563eb);">
+              <p class="text-white font-bold mb-1 lang-zh">🦆 学懂了？来做题巩固一下！</p>
+              <p class="text-white font-bold mb-1 lang-en">🦆 Got it? Reinforce with practice questions!</p>
+              <p class="text-blue-200 text-sm mb-3 lang-zh">鸭鸭数学有 SC07 微分专题题库，AI 即时批改。</p>
+              <p class="text-blue-200 text-sm mb-3 lang-en">DuckMath has SC07 Differentiation questions with instant AI grading.</p>
+              <a href="https://uecstudent.streamlit.app" target="_blank"
+                 class="inline-block bg-duck-400 hover:bg-duck-500 text-gray-900 font-bold px-6 py-2.5 rounded-full transition-colors text-sm">
+                <span class="lang-zh">免费开始练习 →</span>
+                <span class="lang-en">Start Practising Free →</span>
+              </a>
+            </div>
+
+          </div>
+        </div><!-- /sc07-u1 -->
+
+      </div><!-- /unit-content -->
+    </div><!-- /grid -->
+  </div><!-- /content-sc07 -->
+
+
+  <!-- ══ SC06 ══ -->
+  <div id="content-sc06" class="hidden">
+    <div class="text-center py-16 text-gray-400">
+      <div class="text-5xl mb-4">🚧</div>
+      <p class="font-semibold text-lg lang-zh">SC06 讲义正在编写中，敬请期待！</p>
+      <p class="font-semibold text-lg lang-en">SC06 notes are being prepared. Coming soon!</p>
+      <p class="text-sm mt-2 lang-zh">先去练 SC07 微分，打好基础 💪</p>
+      <p class="text-sm mt-2 lang-en">Start with SC07 Differentiation to build your foundation 💪</p>
+      <button onclick="switchSubject('sc07')" class="mt-6 bg-brand-600 text-white font-bold px-6 py-2.5 rounded-full text-sm hover:bg-brand-700 transition-colors">
+        <span class="lang-zh">去看 SC07 讲义</span>
+        <span class="lang-en">View SC07 Notes</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══ SC05 ══ -->
+  <div id="content-sc05" class="hidden">
+    <div class="text-center py-16 text-gray-400">
+      <div class="text-5xl mb-4">🚧</div>
+      <p class="font-semibold text-lg lang-zh">SC05 讲义正在编写中，敬请期待！</p>
+      <p class="font-semibold text-lg lang-en">SC05 notes are being prepared. Coming soon!</p>
+      <button onclick="switchSubject('sc07')" class="mt-6 bg-brand-600 text-white font-bold px-6 py-2.5 rounded-full text-sm hover:bg-brand-700 transition-colors">
+        <span class="lang-zh">去看 SC07 讲义</span>
+        <span class="lang-en">View SC07 Notes</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══ SC04 ══ -->
+  <div id="content-sc04" class="hidden">
+    <div class="text-center py-16 text-gray-400">
+      <div class="text-5xl mb-4">🚧</div>
+      <p class="font-semibold text-lg lang-zh">SC04 讲义正在编写中，敬请期待！</p>
+      <p class="font-semibold text-lg lang-en">SC04 notes are being prepared. Coming soon!</p>
+      <button onclick="switchSubject('sc07')" class="mt-6 bg-brand-600 text-white font-bold px-6 py-2.5 rounded-full text-sm hover:bg-brand-700 transition-colors">
+        <span class="lang-zh">去看 SC07 讲义</span>
+        <span class="lang-en">View SC07 Notes</span>
+      </button>
+    </div>
+  </div>
+
+</div><!-- /main container -->
+
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-400 py-10 px-4 mt-10">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+    <div class="flex items-center gap-2 text-white font-bold text-lg">
+      <span class="text-2xl">🦆</span>
+      <span class="lang-zh">鸭鸭数学 · UEC 数学宝典</span>
+      <span class="lang-en">DuckMath · UEC Math Wiki</span>
+    </div>
+    <div class="flex gap-6">
+      <a href="index.html" class="hover:text-white transition-colors lang-zh">首页</a>
+      <a href="index.html" class="hover:text-white transition-colors lang-en">Home</a>
+      <a href="blog/index.html" class="hover:text-white transition-colors lang-zh">博客</a>
+      <a href="blog/index.html" class="hover:text-white transition-colors lang-en">Blog</a>
+      <a href="privacy.html" class="hover:text-white transition-colors lang-zh">隐私</a>
+      <a href="privacy.html" class="hover:text-white transition-colors lang-en">Privacy</a>
+    </div>
+    <p>© 2026 TinkTech Sdn Bhd</p>
+  </div>
+</footer>
+
+
+<script>
+// Language toggle
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.getElementById('btn-zh').className = lang === 'zh'
+    ? 'px-3 py-1.5 lang-btn-active transition-colors'
+    : 'px-3 py-1.5 lang-btn-inactive transition-colors';
+  document.getElementById('btn-en').className = lang === 'en'
+    ? 'px-3 py-1.5 lang-btn-active transition-colors'
+    : 'px-3 py-1.5 lang-btn-inactive transition-colors';
+  localStorage.setItem('duckmath_lang', lang);
+}
+const savedLang = localStorage.getItem('duckmath_lang');
+if (savedLang) setLang(savedLang);
+
+// Subject tabs
+function switchSubject(subj) {
+  ['sc04','sc05','sc06','sc07'].forEach(s => {
+    document.getElementById('content-' + s).classList.toggle('hidden', s !== subj);
+    const tab = document.getElementById('tab-' + s);
+    tab.className = 'subj-tab ' + (s === subj ? 'active' : 'inactive');
+  });
+}
+
+// Unit selector (SC07)
+function showUnit(unitId) {
+  // highlight row
+  document.querySelectorAll('.unit-row:not(.coming-soon)').forEach(r => {
+    r.style.borderColor = '#e5e7eb';
+    r.style.background = 'white';
+  });
+  const row = document.getElementById('row-' + unitId);
+  if (row) { row.style.borderColor = '#2563eb'; row.style.background = '#eff6ff'; }
+  // show content (only one unit for now)
+  document.getElementById('sc07-u1').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
