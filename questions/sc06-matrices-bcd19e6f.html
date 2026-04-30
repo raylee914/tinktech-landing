@@ -13,36 +13,43 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
-  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Noto Sans SC','Inter','sans-serif']},colors:{brand:{50:'#eff6ff',100:'#dbeafe',600:'#2563eb',700:'#1d4ed8',800:'#1e40af'},duck:{400:'#fbbf24',500:'#f59e0b'}}}}}</script>
+  <script>tailwind.config={theme:{extend:{
+    fontFamily:{sans:['Noto Sans SC','Inter','sans-serif']},
+    colors:{brand:{50:'#eff6ff',100:'#dbeafe',600:'#2563eb',700:'#1d4ed8',800:'#1e40af'},duck:{400:'#fbbf24',500:'#f59e0b'}}
+  }}}</script>
   <style>
     html[lang="en"] .lang-zh{display:none!important}
     html[lang="zh"] .lang-en{display:none!important}
     .lang-btn-active{background:#2563eb;color:white}
     .lang-btn-inactive{background:transparent;color:#6b7280}
     .example-box{background:#f0fdf4;border-left:4px solid #16a34a;border-radius:0 8px 8px 0;padding:16px 20px;margin:12px 0}
-    .step{display:flex;gap:12px;margin-bottom:10px}
-    .step-num{width:26px;height:26px;border-radius:50%;background:#2563eb;color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
     .answer-box{background:#f0f7ff;border-left:4px solid #2563eb;border-radius:0 8px 8px 0;padding:16px 20px;margin:12px 0}
+    .step{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+    .step-num{min-width:26px;height:26px;border-radius:50%;background:#2563eb;color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+    .step-body{color:#374151;font-size:0.9rem;line-height:1.7;flex:1}
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8007778449006887" crossorigin="anonymous"></script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "SC06 Matrices 解题步骤", "description": "UEC SC06 Matrices 练习题附完整解题步骤。求 [式] 的值。 A. [式] B. [式] C. [式] D. [式]", "step": [{"@type": "HowToStep", "text": "1. Expand the determinant along the first row: $1 \\begin{vmatrix} 2 & 1 \\\\ 1 & 3 \\end{vmatrix} - 3 \\begin{vmatrix} 3 & 1 \\\\ 2 & 3 \\end{vmatrix} + 2 \\begin{vmatrix} 3 & 2 \\\\ 2 & 1 \\end{vmatrix}$."}, {"@type": "HowToStep", "text": "2. Calculate the $2 \\times 2$ determinants: $1(6 - 1) - 3(9 - 2) + 2(3 - 4)$."}, {"@type": "HowToStep", "text": "3. $1(5) - 3(7) + 2(-1) = 5 - 21 - 2 = -18$."}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "SC06 Matrices 解题步骤", "description": "UEC SC06 Matrices 练习题附完整解题步骤。求 [式] 的值。 A. [式] B. [式] C. [式] D. [式]", "step": [{"@type": "HowToStep", "text": "Expand the determinant along the first row: $1 \\begin{vmatrix} 2 & 1 \\\\ 1 & 3 \\end{vmatrix} - 3 \\begin{vmatrix} 3 & 1 \\\\ 2 & 3 \\end{vmatrix} + 2 \\begin{vmatrix} 3 & 2 \\\\ 2 & 1 \\end{vmatrix}$."}, {"@type": "HowToStep", "text": "Calculate the $2 \\times 2$ determinants: $1(6 - 1) - 3(9 - 2) + 2(3 - 4)$."}, {"@type": "HowToStep", "text": "$1(5) - 3(7) + 2(-1) = 5 - 21 - 2 = -18$."}]}</script>
 </head>
 <body class="font-sans text-gray-800 bg-gray-50">
 
 <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
   <div class="max-w-5xl mx-auto px-4 flex items-center justify-between h-14">
-    <a href="../index.html" class="flex items-center gap-2 font-bold text-lg text-brand-800">
+    <a href="../index.html" class="flex items-center gap-2 font-bold text-lg" style="color:#1e40af">
       <span class="text-xl">🦆</span> 鸭鸭数学
     </a>
-    <div class="flex items-center gap-2">
-      <a href="../wiki.html" class="text-sm text-brand-600 font-semibold hover:underline lang-zh">数学宝典</a>
-      <a href="../wiki.html" class="text-sm text-brand-600 font-semibold hover:underline lang-en">Math Wiki</a>
-      <div class="flex items-center border border-gray-200 rounded-full overflow-hidden text-xs font-semibold ml-2">
+    <div class="flex items-center gap-3">
+      <a href="../wiki.html" class="text-sm font-semibold hover:underline lang-zh" style="color:#2563eb">数学宝典</a>
+      <a href="../wiki.html" class="text-sm font-semibold hover:underline lang-en" style="color:#2563eb">Math Wiki</a>
+      <a href="index.html"   class="text-sm font-semibold hover:underline lang-zh" style="color:#2563eb">题库</a>
+      <a href="index.html"   class="text-sm font-semibold hover:underline lang-en" style="color:#2563eb">Q-Bank</a>
+      <div class="flex items-center border border-gray-200 rounded-full overflow-hidden text-xs font-semibold ml-1">
         <button id="btn-zh" onclick="setLang('zh')" class="px-3 py-1.5 lang-btn-active">中文</button>
         <button id="btn-en" onclick="setLang('en')" class="px-3 py-1.5 lang-btn-inactive">EN</button>
       </div>
       <a href="https://uecstudent.streamlit.app" target="_blank"
-         class="bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold px-3 py-2 rounded-full transition-colors">
+         class="text-white text-xs font-bold px-3 py-2 rounded-full transition-colors"
+         style="background:#2563eb">
         <span class="lang-zh">去练题 →</span><span class="lang-en">Practice →</span>
       </a>
     </div>
@@ -52,8 +59,10 @@
 <!-- Breadcrumb -->
 <div class="max-w-5xl mx-auto px-4 py-3 text-xs text-gray-400">
   <a href="../index.html" class="hover:text-brand-600">首页</a> ›
-  <a href="index.html" class="hover:text-brand-600 lang-zh">题目库</a>
-  <a href="index.html" class="hover:text-brand-600 lang-en">Questions</a> ›
+  <a href="index.html" class="hover:text-brand-600 lang-zh">题库</a>
+  <a href="index.html" class="hover:text-brand-600 lang-en">Q-Bank</a> ›
+  <span class="px-2 py-0.5 rounded-full text-white text-xs font-mono" style="background:#0891b2">→ 向量与矩阵</span>
+  <span class="mx-1">›</span>
   <span class="text-gray-600">SC06 · Matrices</span>
 </div>
 
@@ -64,12 +73,13 @@
     <div class="md:col-span-2">
       <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
 
-        <!-- Header -->
+        <!-- Header badges -->
         <div class="flex flex-wrap items-center gap-2 mb-4">
+          <span class="text-xs font-bold px-2 py-1 rounded-full text-white" style="background:#0891b2">→ 向量与矩阵</span>
           <span class="text-xs font-mono bg-brand-50 text-brand-700 px-2 py-1 rounded-full">SC06</span>
-          <span class="text-xs font-mono bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Matrices</span>
-          <span class="text-xs font-mono bg-gray-100 text-gray-600 px-2 py-1 rounded-full">★★☆☆☆ 基础</span>
-          <span class="text-xs font-mono bg-yellow-50 text-yellow-700 px-2 py-1 rounded-full">MCQ</span>
+          <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Matrices</span>
+          <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">★★☆☆☆ 基础</span>
+          <span class="text-xs bg-yellow-50 text-yellow-700 px-2 py-1 rounded-full">MCQ</span>
         </div>
 
         <h1 class="text-xl font-black mb-4 lang-zh">SC06 Matrices 练习题</h1>
@@ -97,16 +107,11 @@ D. $-36$
         <div class="answer-box font-semibold">B</div>
 
         
-<h3 class="font-bold text-lg mt-6 mb-3 lang-zh">✏️ 完整解题步骤</h3>
-<h3 class="font-bold text-lg mt-6 mb-3 lang-en">✏️ Step-by-Step Solution</h3>
-<div class="example-box space-y-2"><div class="step"><div class="step-num">1</div><div class="text-gray-700 text-sm leading-relaxed">Expand the determinant along the first row: $1 \begin{vmatrix} 2 & 1 \\ 1 & 3 \end{vmatrix} - 3 \begin{vmatrix} 3 & 1 \\ 2 & 3 \end{vmatrix} + 2 \begin{vmatrix} 3 & 2 \\ 2 & 1 \end{vmatrix}$.</div></div><div class="step"><div class="step-num">2</div><div class="text-gray-700 text-sm leading-relaxed">Calculate the $2 \times 2$ determinants: $1(6 - 1) - 3(9 - 2) + 2(3 - 4)$.</div></div><div class="step"><div class="step-num">3</div><div class="text-gray-700 text-sm leading-relaxed">$1(5) - 3(7) + 2(-1) = 5 - 21 - 2 = -18$.</div></div></div>
+<h3 class="font-bold text-lg mt-8 mb-3 lang-zh">✏️ 完整解题步骤</h3>
+<h3 class="font-bold text-lg mt-8 mb-3 lang-en">✏️ Step-by-Step Solution</h3>
+<div class="example-box"><div class="step"><div class="step-num">1</div><div class="step-body">Expand the determinant along the first row: $1 \begin{vmatrix} 2 & 1 \\ 1 & 3 \end{vmatrix} - 3 \begin{vmatrix} 3 & 1 \\ 2 & 3 \end{vmatrix} + 2 \begin{vmatrix} 3 & 2 \\ 2 & 1 \end{vmatrix}$.</div></div><div class="step"><div class="step-num">2</div><div class="step-body">Calculate the $2 \times 2$ determinants: $1(6 - 1) - 3(9 - 2) + 2(3 - 4)$.</div></div><div class="step"><div class="step-num">3</div><div class="step-body">$1(5) - 3(7) + 2(-1) = 5 - 21 - 2 = -18$.</div></div></div>
 
         
-<div class="mt-8 p-5 bg-gray-50 rounded-2xl">
-  <h3 class="font-bold text-gray-700 mb-3 lang-zh">📚 同主题练习题</h3>
-  <h3 class="font-bold text-gray-700 mb-3 lang-en">📚 Related Questions</h3>
-  <ul class="space-y-1"><li><a href="sc04-matrices-b115b765.html" class="text-brand-600 hover:underline text-sm">Matrices · 中等</a></li><li><a href="sc06-matrices-392d7044.html" class="text-brand-600 hover:underline text-sm">Matrices · 中等</a></li><li><a href="sc04-matrices-9df29560.html" class="text-brand-600 hover:underline text-sm">Matrices · 困难</a></li><li><a href="sc04-matrices-13b22912.html" class="text-brand-600 hover:underline text-sm">Matrices · 困难</a></li><li><a href="sc04-matrices-0ad3fb1b.html" class="text-brand-600 hover:underline text-sm">Matrices · 中等</a></li><li><a href="sc04-matrices-b19723c5.html" class="text-brand-600 hover:underline text-sm">Matrices · 中等</a></li></ul>
-</div>
 
         <!-- CTA -->
         <div class="mt-8 p-5 rounded-2xl text-center" style="background:linear-gradient(135deg,#1e40af,#2563eb);">
@@ -126,47 +131,47 @@ D. $-36$
 
     <!-- Sidebar -->
     <div class="md:col-span-1 space-y-4">
-
-      <!-- Subject info -->
       <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
-        <div class="text-xs font-mono text-brand-600 tracking-wider mb-2 lang-zh">关于 SC06</div>
-        <div class="text-xs font-mono text-brand-600 tracking-wider mb-2 lang-en">ABOUT SC06</div>
+        <div class="text-xs font-mono tracking-wider mb-2 lang-zh" style="color:#0891b2">→ 向量与矩阵</div>
+        <div class="text-xs font-mono tracking-wider mb-2 lang-en" style="color:#0891b2">→ Vectors & Matrices</div>
         <p class="text-sm text-gray-600 leading-relaxed lang-zh">
-          此题属于统考 SC06 科目，考点为 <strong>Matrices</strong>，难度为基础。
-          建议配合鸭鸭数学题库系统练习，AI 即时批改助你快速掌握。
+          此题属于统考 <strong>SC06</strong>，单元：<strong>向量与矩阵</strong>，
+          考点：<strong>Matrices</strong>，难度：基础。
         </p>
         <p class="text-sm text-gray-600 leading-relaxed lang-en">
-          This question belongs to UEC SC06, topic: <strong>Matrices</strong>, difficulty: 基础.
-          Use DuckMath's question bank for systematic practice with instant AI feedback.
+          Subject: <strong>SC06</strong> · Unit: <strong>Vectors & Matrices</strong> ·
+          Topic: <strong>Matrices</strong> · Level: 基础.
         </p>
-        <a href="../wiki.html" class="inline-block mt-3 text-xs font-semibold text-brand-600 hover:underline lang-zh">查看 Matrices 讲义 →</a>
-        <a href="../wiki.html" class="inline-block mt-3 text-xs font-semibold text-brand-600 hover:underline lang-en">View Matrices Notes →</a>
+        <a href="../wiki.html" class="inline-block mt-3 text-xs font-semibold hover:underline lang-zh" style="color:#2563eb">查看 向量与矩阵 讲义 →</a>
+        <a href="../wiki.html" class="inline-block mt-3 text-xs font-semibold hover:underline lang-en" style="color:#2563eb">View Vectors & Matrices Notes →</a>
       </div>
 
-      <!-- Quick tips -->
-      <div class="bg-yellow-50 rounded-2xl border border-yellow-100 p-5">
-        <div class="font-bold text-yellow-800 text-sm mb-2 lang-zh">💡 解题小贴士</div>
-        <div class="font-bold text-yellow-800 text-sm mb-2 lang-en">💡 Quick Tips</div>
-        <ul class="text-xs text-yellow-700 space-y-1 list-disc list-inside lang-zh">
+      <div class="rounded-2xl border border-yellow-100 p-5" style="background:#fffbeb">
+        <div class="font-bold text-sm mb-2 lang-zh" style="color:#92400e">💡 解题小贴士</div>
+        <div class="font-bold text-sm mb-2 lang-en" style="color:#92400e">💡 Quick Tips</div>
+        <ul class="text-xs space-y-1 list-disc list-inside lang-zh" style="color:#b45309">
           <li>先审题，找出已知条件</li>
           <li>对照公式，选择合适方法</li>
           <li>写清步骤，避免丢分</li>
-          <li>检查答案单位与合理性</li>
+          <li>检查答案合理性</li>
         </ul>
-        <ul class="text-xs text-yellow-700 space-y-1 list-disc list-inside lang-en">
+        <ul class="text-xs space-y-1 list-disc list-inside lang-en" style="color:#b45309">
           <li>Read carefully, identify given info</li>
-          <li>Match formulas to the method</li>
-          <li>Show all steps clearly</li>
-          <li>Check units and reasonableness</li>
+          <li>Match the right formula/method</li>
+          <li>Show all working steps clearly</li>
+          <li>Check your answer makes sense</li>
         </ul>
       </div>
-
     </div>
   </div>
 </div>
 
 <footer class="bg-gray-900 text-gray-400 py-8 px-4 text-center text-sm">
-  <p>© 2026 TinkTech Sdn Bhd · <a href="../index.html" class="hover:text-white">鸭鸭数学</a> · <a href="../privacy.html" class="hover:text-white lang-zh">隐私政策</a><a href="../privacy.html" class="hover:text-white lang-en">Privacy</a></p>
+  <p>© 2026 TinkTech Sdn Bhd ·
+    <a href="../index.html" class="hover:text-white">鸭鸭数学</a> ·
+    <a href="../privacy.html" class="hover:text-white lang-zh">隐私政策</a>
+    <a href="../privacy.html" class="hover:text-white lang-en">Privacy</a>
+  </p>
 </footer>
 
 <script>
