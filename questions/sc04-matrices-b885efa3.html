@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Matrices 统考题 · SC06 | 鸭鸭数学 UEC 数学宝典</title>
-  <meta name="description" content="UEC SC06 Matrices 练习题附完整解题步骤。求 [式] 的值。 A. [式] B. [式] C. [式] D. [式]"/>
-  <link rel="canonical" href="https://duckmath.tinktech.com.my/questions/sc06-matrices-bcd19e6f.html"/>
+  <title>Matrices 统考题 · SC04 | 鸭鸭数学 UEC 数学宝典</title>
+  <meta name="description" content="UEC SC04 Matrices 练习题附完整解题步骤。6. (a) 已知 [式] 的逆矩阵为 [式] (i) 求 [式] 的值。 (3%) (ii) 利用 (i) 的结果，解方程组 [式] (3%)"/>
+  <link rel="canonical" href="https://duckmath.tinktech.com.my/questions/sc04-matrices-b885efa3.html"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -29,7 +29,7 @@
     .step-body{color:#374151;font-size:0.9rem;line-height:1.7;flex:1}
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8007778449006887" crossorigin="anonymous"></script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "SC06 Matrices 解题步骤", "description": "UEC SC06 Matrices 练习题附完整解题步骤。求 [式] 的值。 A. [式] B. [式] C. [式] D. [式]", "step": [{"@type": "HowToStep", "text": "Expand the determinant along the first row: $1 \\begin{vmatrix} 2 & 1 \\\\ 1 & 3 \\end{vmatrix} - 3 \\begin{vmatrix} 3 & 1 \\\\ 2 & 3 \\end{vmatrix} + 2 \\begin{vmatrix} 3 & 2 \\\\ 2 & 1 \\end{vmatrix}$."}, {"@type": "HowToStep", "text": "Calculate the $2 \\times 2$ determinants: $1(6 - 1) - 3(9 - 2) + 2(3 - 4)$."}, {"@type": "HowToStep", "text": "$1(5) - 3(7) + 2(-1) = 5 - 21 - 2 = -18$."}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "SC04 Matrices 解题步骤", "description": "UEC SC04 Matrices 练习题附完整解题步骤。6. (a) 已知 [式] 的逆矩阵为 [式] (i) 求 [式] 的值。 (3%) (ii) 利用 (i) 的结果，解方程组 [式] (3%)", "step": [{"@type": "HowToStep", "text": "To find the values of $m$ and $n$, we use the identity $A A^{-1} = I$, where $I$ is the identity matrix."}, {"@type": "HowToStep", "text": "Multiplying the second row of $A$ by the second column of $A^{-1}$ gives the $(2,2)$ element of $I$, which is 1: $(0)(-1) + (1)(m) + (1)(\\frac{1}{2}) = 1 \\Rightarrow m + \\frac{1}{2} = 1 \\Rightarrow m = \\frac{1}{2}$."}, {"@type": "HowToStep", "text": "Multiplying the second row of $A$ by the third column of $A^{-1}$ gives the $(2,3)$ element of $I$, which is 0: $(0)(1) + (1)(n) + (1)(\\frac{1}{2}) = 0 \\Rightarrow n + \\frac{1}{2} = 0 \\Rightarrow n = -\\frac{1}{2}$."}, {"@type": "HowToStep", "text": "Thus, $m + n = \\frac{1}{2} + (-\\frac{1}{2}) = 0$."}, {"@type": "HowToStep", "text": "The system of equations in part (ii) can be written in matrix form as $A \\mathbf{x} = \\mathbf{b}$, where $\\mathbf{x} = \\begin{pmatrix} x \\\\ y \\\\ z \\end{pmatrix}$ and $\\mathbf{b} = \\begin{pmatrix} 5 \\\\ -1 \\\\ 5 \\end{pmatrix}$."}, {"@type": "HowToStep", "text": "Solving for $\\mathbf{x}$ gives $\\mathbf{x} = A^{-1} \\mathbf{b}$. Substituting $m = \\frac{1}{2}$ and $n = -\\frac{1}{2}$ into $A^{-1}$, we get:"}, {"@type": "HowToStep", "text": "$\\begin{pmatrix} x \\\\ y \\\\ z \\end{pmatrix} = \\begin{pmatrix} -1 & -1 & 1 \\\\ 1 & \\frac{1}{2} & -\\frac{1}{2} \\\\ -1 & \\frac{1}{2} & \\frac{1}{2} \\end{pmatrix} \\begin{pmatrix} 5 \\\\ -1 \\\\ 5 \\end{pmatrix}$"}, {"@type": "HowToStep", "text": "Performing the matrix multiplication:"}, {"@type": "HowToStep", "text": "$x = (-1)(5) + (-1)(-1) + (1)(5) = -5 + 1 + 5 = 1$"}, {"@type": "HowToStep", "text": "$y = (1)(5) + (\\frac{1}{2})(-1) + (-\\frac{1}{2})(5) = 5 - 0.5 - 2.5 = 2$"}, {"@type": "HowToStep", "text": "$z = (-1)(5) + (\\frac{1}{2})(-1) + (\\frac{1}{2})(5) = -5 - 0.5 + 2.5 = -3$"}, {"@type": "HowToStep", "text": "The final solution is $x = 1, y = 2, z = -3$."}]}</script>
 </head>
 <body class="font-sans text-gray-800 bg-gray-50">
 
@@ -63,7 +63,7 @@
   <a href="index.html" class="hover:text-brand-600 lang-en">Q-Bank</a> ›
   <span class="px-2 py-0.5 rounded-full text-white text-xs font-mono" style="background:#0891b2">→ 向量与矩阵</span>
   <span class="mx-1">›</span>
-  <span class="text-gray-600">SC06 · Matrices</span>
+  <span class="text-gray-600">SC04 · Matrices</span>
 </div>
 
 <div class="max-w-5xl mx-auto px-4 pb-16">
@@ -76,46 +76,40 @@
         <!-- Header badges -->
         <div class="flex flex-wrap items-center gap-2 mb-4">
           <span class="text-xs font-bold px-2 py-1 rounded-full text-white" style="background:#0891b2">→ 向量与矩阵</span>
-          <span class="text-xs font-mono bg-brand-50 text-brand-700 px-2 py-1 rounded-full">SC06</span>
+          <span class="text-xs font-mono bg-brand-50 text-brand-700 px-2 py-1 rounded-full">SC04</span>
           <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Matrices</span>
-          <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">★★☆☆☆ 基础</span>
-          <span class="text-xs bg-yellow-50 text-yellow-700 px-2 py-1 rounded-full">MCQ</span>
+          <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">★★★☆☆ 中等</span>
+          <span class="text-xs bg-yellow-50 text-yellow-700 px-2 py-1 rounded-full">Structured</span>
         </div>
 
-        <h1 class="text-xl font-black mb-4 lang-zh">SC06 Matrices 练习题</h1>
-        <h1 class="text-xl font-black mb-4 lang-en">SC06 Matrices Practice Question</h1>
+        <h1 class="text-xl font-black mb-4 lang-zh">SC04 Matrices 练习题</h1>
+        <h1 class="text-xl font-black mb-4 lang-en">SC04 Matrices Practice Question</h1>
 
         <!-- Question -->
         <div class="bg-gray-50 rounded-xl p-5 mb-2 text-gray-800 leading-relaxed text-base">
           
-          求 $\begin{vmatrix} 1 & 3 & 2 \\ 3 & 2 & 1 \\ 2 & 1 & 3 \end{vmatrix}$ 的值。
-
-A. $18$
-
-B. $-18$
-
-C. $36$
-
-D. $-36$
+          6. (a) 已知 $A = \begin{pmatrix} 1 & 2 & 0 \\ 0 & 1 & 1 \\ 2 & 3 & 1 \end{pmatrix}$ 的逆矩阵为 $A^{-1} = \begin{pmatrix} -1 & -1 & 1 \\ 1 & m & n \\ -1 & \frac{1}{2} & \frac{1}{2} \end{pmatrix}$ 
+(i) 求 $m + n$ 的值。 (3%)
+(ii) 利用 (i) 的结果，解方程组 $\begin{cases} x + 2y = 5 \\ y + z = -1 \\ 2x + 3y + z = 5 \end{cases}$ (3%)
         </div>
-        <p class="text-xs text-gray-400 mb-6 lang-zh">📌 考点：Matrices · 难度：基础</p>
-        <p class="text-xs text-gray-400 mb-6 lang-en">📌 Topic: Matrices · Difficulty: 基础</p>
+        <p class="text-xs text-gray-400 mb-6 lang-zh">📌 考点：Matrices · 难度：中等</p>
+        <p class="text-xs text-gray-400 mb-6 lang-en">📌 Topic: Matrices · Difficulty: 中等</p>
 
         <!-- Answer -->
         <h3 class="font-bold text-lg mb-3 lang-zh">✅ 答案</h3>
         <h3 class="font-bold text-lg mb-3 lang-en">✅ Answer</h3>
-        <div class="answer-box font-semibold">B</div>
+        <div class="answer-box font-semibold">(i) m + n = 0, (ii) x = 1, y = 2, z = -3</div>
 
         
 <h3 class="font-bold text-lg mt-8 mb-3 lang-zh">✏️ 完整解题步骤</h3>
 <h3 class="font-bold text-lg mt-8 mb-3 lang-en">✏️ Step-by-Step Solution</h3>
-<div class="example-box"><div class="step"><div class="step-num">1</div><div class="step-body">Expand the determinant along the first row: $1 \begin{vmatrix} 2 & 1 \\ 1 & 3 \end{vmatrix} - 3 \begin{vmatrix} 3 & 1 \\ 2 & 3 \end{vmatrix} + 2 \begin{vmatrix} 3 & 2 \\ 2 & 1 \end{vmatrix}$.</div></div><div class="step"><div class="step-num">2</div><div class="step-body">Calculate the $2 \times 2$ determinants: $1(6 - 1) - 3(9 - 2) + 2(3 - 4)$.</div></div><div class="step"><div class="step-num">3</div><div class="step-body">$1(5) - 3(7) + 2(-1) = 5 - 21 - 2 = -18$.</div></div></div>
+<div class="example-box"><div class="step"><div class="step-num">1</div><div class="step-body">To find the values of $m$ and $n$, we use the identity $A A^{-1} = I$, where $I$ is the identity matrix.</div></div><div class="step"><div class="step-num">2</div><div class="step-body">Multiplying the second row of $A$ by the second column of $A^{-1}$ gives the $(2,2)$ element of $I$, which is 1: $(0)(-1) + (1)(m) + (1)(\frac{1}{2}) = 1 \Rightarrow m + \frac{1}{2} = 1 \Rightarrow m = \frac{1}{2}$.</div></div><div class="step"><div class="step-num">3</div><div class="step-body">Multiplying the second row of $A$ by the third column of $A^{-1}$ gives the $(2,3)$ element of $I$, which is 0: $(0)(1) + (1)(n) + (1)(\frac{1}{2}) = 0 \Rightarrow n + \frac{1}{2} = 0 \Rightarrow n = -\frac{1}{2}$.</div></div><div class="step"><div class="step-num">4</div><div class="step-body">Thus, $m + n = \frac{1}{2} + (-\frac{1}{2}) = 0$.</div></div><div class="step"><div class="step-num">5</div><div class="step-body">The system of equations in part (ii) can be written in matrix form as $A \mathbf{x} = \mathbf{b}$, where $\mathbf{x} = \begin{pmatrix} x \\ y \\ z \end{pmatrix}$ and $\mathbf{b} = \begin{pmatrix} 5 \\ -1 \\ 5 \end{pmatrix}$.</div></div><div class="step"><div class="step-num">6</div><div class="step-body">Solving for $\mathbf{x}$ gives $\mathbf{x} = A^{-1} \mathbf{b}$. Substituting $m = \frac{1}{2}$ and $n = -\frac{1}{2}$ into $A^{-1}$, we get:</div></div><div class="step"><div class="step-num">7</div><div class="step-body">$\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} -1 & -1 & 1 \\ 1 & \frac{1}{2} & -\frac{1}{2} \\ -1 & \frac{1}{2} & \frac{1}{2} \end{pmatrix} \begin{pmatrix} 5 \\ -1 \\ 5 \end{pmatrix}$</div></div><div class="step"><div class="step-num">8</div><div class="step-body">Performing the matrix multiplication:</div></div><div class="step"><div class="step-num">9</div><div class="step-body">$x = (-1)(5) + (-1)(-1) + (1)(5) = -5 + 1 + 5 = 1$</div></div><div class="step"><div class="step-num">10</div><div class="step-body">$y = (1)(5) + (\frac{1}{2})(-1) + (-\frac{1}{2})(5) = 5 - 0.5 - 2.5 = 2$</div></div><div class="step"><div class="step-num">11</div><div class="step-body">$z = (-1)(5) + (\frac{1}{2})(-1) + (\frac{1}{2})(5) = -5 - 0.5 + 2.5 = -3$</div></div><div class="step"><div class="step-num">12</div><div class="step-body">The final solution is $x = 1, y = 2, z = -3$.</div></div></div>
 
         
 <div class="mt-8 p-5 bg-gray-50 rounded-2xl">
   <h3 class="font-bold text-gray-700 mb-3 lang-zh">📚 同主题练习题</h3>
   <h3 class="font-bold text-gray-700 mb-3 lang-en">📚 Related Questions</h3>
-  <ul class="space-y-1"><li><a href="sc04-matrices-5642285b.html" class="text-brand-600 hover:underline text-sm">Matrices · 中等</a></li><li><a href="sc04-matrices-9df29560.html" class="text-brand-600 hover:underline text-sm">Matrices · 困难</a></li><li><a href="sc04-matrices-0ab45c6f.html" class="text-brand-600 hover:underline text-sm">Matrices · 基础</a></li><li><a href="sc04-matrices-b885efa3.html" class="text-brand-600 hover:underline text-sm">Matrices · 中等</a></li></ul>
+  <ul class="space-y-1"><li><a href="sc04-matrices-5642285b.html" class="text-brand-600 hover:underline text-sm">Matrices · 中等</a></li><li><a href="sc06-matrices-bcd19e6f.html" class="text-brand-600 hover:underline text-sm">Matrices · 基础</a></li><li><a href="sc04-matrices-9df29560.html" class="text-brand-600 hover:underline text-sm">Matrices · 困难</a></li><li><a href="sc04-matrices-0ab45c6f.html" class="text-brand-600 hover:underline text-sm">Matrices · 基础</a></li></ul>
 </div>
 
         <!-- CTA -->
@@ -140,12 +134,12 @@ D. $-36$
         <div class="text-xs font-mono tracking-wider mb-2 lang-zh" style="color:#0891b2">→ 向量与矩阵</div>
         <div class="text-xs font-mono tracking-wider mb-2 lang-en" style="color:#0891b2">→ Vectors & Matrices</div>
         <p class="text-sm text-gray-600 leading-relaxed lang-zh">
-          此题属于统考 <strong>SC06</strong>，单元：<strong>向量与矩阵</strong>，
-          考点：<strong>Matrices</strong>，难度：基础。
+          此题属于统考 <strong>SC04</strong>，单元：<strong>向量与矩阵</strong>，
+          考点：<strong>Matrices</strong>，难度：中等。
         </p>
         <p class="text-sm text-gray-600 leading-relaxed lang-en">
-          Subject: <strong>SC06</strong> · Unit: <strong>Vectors & Matrices</strong> ·
-          Topic: <strong>Matrices</strong> · Level: 基础.
+          Subject: <strong>SC04</strong> · Unit: <strong>Vectors & Matrices</strong> ·
+          Topic: <strong>Matrices</strong> · Level: 中等.
         </p>
         <a href="../wiki.html" class="inline-block mt-3 text-xs font-semibold hover:underline lang-zh" style="color:#2563eb">查看 向量与矩阵 讲义 →</a>
         <a href="../wiki.html" class="inline-block mt-3 text-xs font-semibold hover:underline lang-en" style="color:#2563eb">View Vectors & Matrices Notes →</a>
