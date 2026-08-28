@@ -3,14 +3,21 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>看广告换Token – 鸭鸭数学</title>
+  <title>每日签到领Token – 鸭鸭数学</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet"/>
-  <!-- ══ AdSense: paste your ad unit code here when approved ══════════════════
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8007778449006887"
-       crossorigin="anonymous"></script>
-  ═══════════════════════════════════════════════════════════════════════════ -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8007778449006887"
-       crossorigin="anonymous"></script>
+  <!-- 2026-08-28: AdSense 合规修法 —— 原来的"看15秒倒计时广告换Token"是
+       incentivized-ads(激励式广告),Google AdSense 政策明确禁止把奖励跟广告
+       观看行为绑定,是账号封禁级风险(LANDING_PAGE_CRO_ADSENSE_AUDIT.md
+       Top-1)。这个页面从来没有真的接入过 <ins class="adsbygoogle">(只是占位
+       壳),但倒计时+"观看进度"UI 本身就是问题所在,不是"等审核通过再接真广告
+       就没事"。改成跟广告完全无关的"每日签到"奖励:立即可领,不用等待/不用
+       观看任何东西,每天限领1次(原限额5次/天,DB 字段复用 ad_views_today/
+       ad_views_date,语义改成签到日期/签到次数)。跟 React 端 TokenShopPage
+       的 AdPlaceholderCard("即将推出",按钮禁用)口径一致——两边都不做"看
+       广告直接领 token"的假激励模式。文件名保留 watch-ad.html 不改
+       (student.py/utils.py 里的 Streamlit 旧端硬编码链接到这个文件名,改名
+       会需要同步改 Streamlit 代码,不在这次范围内)。 -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="f094d0f5-d0c9-40aa-ae4e-1326a65605b6"></script>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Noto Sans SC',sans-serif;background:#f0f4ff;
@@ -26,41 +33,18 @@
     .logo-name{font-size:1.3rem;font-weight:900;color:#1e40af;margin-top:4px;}
     .logo-sub{font-size:0.8rem;color:#6b7280;margin-top:2px;}
 
-    /* Ad slot */
-    .ad-slot{background:linear-gradient(135deg,#e0e7ff,#dbeafe);
-             border:2px dashed #93c5fd;border-radius:16px;
-             min-height:220px;display:flex;flex-direction:column;
+    /* Check-in icon area (replaces old ad-slot placeholder) */
+    .checkin-slot{background:linear-gradient(135deg,#e0e7ff,#dbeafe);
+             border-radius:16px;
+             min-height:160px;display:flex;flex-direction:column;
              align-items:center;justify-content:center;
              padding:20px;margin-bottom:24px;position:relative;text-align:center;}
-    .ad-placeholder-icon{font-size:3rem;margin-bottom:8px;}
-    .ad-placeholder-text{font-size:0.85rem;color:#3b82f6;font-weight:600;}
-    .ad-placeholder-sub{font-size:0.72rem;color:#6b7280;margin-top:4px;}
-
-    /* ── REAL AD UNIT (uncomment & fill in when AdSense approved) ──────────
-       Replace the .ad-slot div above with:
-
-    <div class="ad-slot">
-      <ins class="adsbygoogle"
-           style="display:block;width:100%;min-height:200px"
-           data-ad-client="ca-pub-8007778449006887"
-           data-ad-slot="YOUR_AD_SLOT_ID_HERE"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-    ─────────────────────────────────────────────────────────────────────── */
-
-    /* Progress */
-    .progress-wrap{margin-bottom:20px;}
-    .progress-label{display:flex;justify-content:space-between;
-                    font-size:0.8rem;color:#6b7280;margin-bottom:6px;}
-    .progress-bar{background:#e5e7eb;border-radius:99px;height:10px;overflow:hidden;}
-    .progress-fill{background:linear-gradient(90deg,#2563eb,#7c3aed);
-                   height:100%;border-radius:99px;transition:width .9s linear;width:0%;}
+    .checkin-icon{font-size:3rem;margin-bottom:8px;}
+    .checkin-text{font-size:0.85rem;color:#3b82f6;font-weight:600;}
+    .checkin-sub{font-size:0.72rem;color:#6b7280;margin-top:4px;}
 
     /* Status */
     .status{text-align:center;margin-bottom:20px;}
-    .status-timer{font-size:2rem;font-weight:900;color:#1e40af;}
     .status-msg{font-size:0.85rem;color:#6b7280;margin-top:4px;line-height:1.5;}
 
     /* Buttons */
@@ -92,7 +76,6 @@
     .footer{text-align:center;font-size:0.72rem;color:#9ca3af;margin-top:20px;}
     .footer a{color:#6b7280;text-decoration:none;}
   </style>
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="f094d0f5-d0c9-40aa-ae4e-1326a65605b6"></script>
 </head>
 <body>
 
@@ -101,34 +84,22 @@
   <div class="logo">
     <div class="logo-duck">🦆</div>
     <div class="logo-name" id="logoName">鸭鸭数学 · DuckMath</div>
-    <div class="logo-sub" id="logoSub">观看广告支持开发者，换取练习 Token</div>
+    <div class="logo-sub" id="logoSub">每日签到，领取练习 Token</div>
   </div>
 
-  <!-- Ad area -->
-  <div class="ad-slot" id="adSlot">
-    <div class="ad-placeholder-icon">📺</div>
-    <div class="ad-placeholder-text" id="adPlaceholderText">广告区域</div>
-    <div class="ad-placeholder-sub" id="adPlaceholderSub">
-      AdSense 审核通过后，真实广告将在此显示<br/>
-      感谢你的支持！每次观看让更多同学免费使用鸭鸭数学 🦆
+  <!-- Check-in area (no ad, no wait) -->
+  <div class="checkin-slot" id="checkinSlot">
+    <div class="checkin-icon">🗓️</div>
+    <div class="checkin-text" id="checkinText">每日签到</div>
+    <div class="checkin-sub" id="checkinSub">
+      每天登入签到一次即可领取，不需要观看任何广告<br/>
+      感谢你的支持！🦆
     </div>
   </div>
 
-  <!-- Progress bar -->
-  <div class="progress-wrap">
-    <div class="progress-label">
-      <span id="progressLabel">观看进度</span>
-      <span id="progressPct">0%</span>
-    </div>
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
-  </div>
-
-  <!-- Timer & message -->
+  <!-- Status -->
   <div class="status">
-    <div class="status-timer" id="timerDisplay">15</div>
-    <div class="status-msg" id="statusMsg">请稍候，广告观看中…完成后可领取 +5 Token</div>
+    <div class="status-msg" id="statusMsg">检查签到状态中…</div>
   </div>
 
   <!-- Error -->
@@ -136,7 +107,7 @@
 
   <!-- Claim button -->
   <button class="btn btn-claim" id="claimBtn" disabled onclick="claimTokens()">
-    ⏳ 请等待广告播放完成…
+    ⏳ 加载中…
   </button>
   <button class="btn btn-close" onclick="closeOrReturn()" style="margin-top:10px;" id="closeBtn">
     ✖ 稍后再来
@@ -148,7 +119,7 @@
   <div class="success-icon">🎉</div>
   <div class="success-title" id="successTitle">+5 Token 领取成功！</div>
   <div class="success-msg" id="successMsg">
-    感谢你观看广告支持鸭鸭数学！<br/>
+    感谢你每日签到支持鸭鸭数学！<br/>
     你的支持让更多马来西亚独中生能免费练习数学。
   </div>
   <div style="background:#f0fdf4;border-radius:12px;padding:14px;margin-bottom:20px;text-align:center;">
@@ -162,10 +133,10 @@
 
 <!-- Limit reached -->
 <div class="card limit-card" id="limitCard">
-  <div class="limit-icon">⏰</div>
-  <div class="limit-title" id="limitTitle">今日观看次数已满</div>
+  <div class="limit-icon">✅</div>
+  <div class="limit-title" id="limitTitle">今日已签到</div>
   <div class="limit-msg" id="limitMsg">
-    你今天已经观看了 5 次广告，明天再来吧！<br/><br/>
+    你今天已经签到过了，明天再来吧！<br/><br/>
     还可以通过购买 Token 继续练习。
   </div>
   <button class="btn btn-close" onclick="closeOrReturn()" style="margin-top:20px;">
@@ -183,10 +154,9 @@
 // ══ Config ═══════════════════════════════════════════════════════════════════
 const SUPABASE_URL     = 'https://ghnrxawknlszjvleonam.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdobnJ4YXdrbmxzemp2bGVvbmFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyOTAzMDQsImV4cCI6MjA5MDg2NjMwNH0.axP0TiD_YZvCJRKv2QlQm5nu-v0UUn9aho3kZOWrJg8';
-const AD_DURATION_SEC  = 15;   // countdown seconds
-const TOKENS_PER_AD    = 5;
-const AD_DAILY_LIMIT   = 5;
-const RETURN_URL       = 'https://uecstudent.streamlit.app';
+const TOKENS_PER_CHECKIN = 5;   // 每日签到奖励(原 TOKENS_PER_AD,已跟广告无关)
+const CHECKIN_DAILY_LIMIT = 1;  // 原 AD_DAILY_LIMIT=5(可看5次广告),改成每天限领1次
+const RETURN_URL       = 'https://uecstudent.streamlit.app'; // 2026-08-28: 故意不跟着 CTA 切——watch-ad.html 目前只从 Streamlit 旧端(pages/student.py)打开,用户的登入 session 在那边,不在新端;'返回'应该送他们回到还登着的那个 app,不是丢到新端一个陌生的登入页(新旧端不共享浏览器本地登入态,只共享同一个 Supabase 数据库)。
 
 // ══ Parse URL params ══════════════════════════════════════════════════════════
 const params = new URLSearchParams(window.location.search);
@@ -197,41 +167,39 @@ const LANG    = params.get('lang') || 'zh'; // zh | en
 // ══ i18n ═════════════════════════════════════════════════════════════════════
 const i18n = {
   zh: {
-    logoSub:        '观看广告支持开发者，换取练习 Token',
-    adPlaceholder:  '广告区域',
-    adSub:          'AdSense 审核通过后，真实广告将在此显示\n感谢你的支持！每次观看让更多同学免费使用鸭鸭数学 🦆',
-    progressLabel:  '观看进度',
-    waitMsg:        '请稍候，广告观看中…完成后可领取 +{n} Token',
+    logoSub:        '每日签到，领取练习 Token',
+    checkinText:    '每日签到',
+    checkinSub:     '每天登入签到一次即可领取，不需要观看任何广告\n感谢你的支持！🦆',
+    loadingMsg:     '检查签到状态中…',
     claimReady:     '🎁 领取 +{n} Token！',
-    waiting:        '⏳ 请等待广告播放完成…',
+    loading:        '⏳ 加载中…',
     closeBtn:       '✖ 稍后再来',
     successTitle:   '+{n} Token 领取成功！',
-    successMsg:     '感谢你观看广告支持鸭鸭数学！\n你的支持让更多马来西亚独中生能免费练习数学。',
+    successMsg:     '感谢你每日签到支持鸭鸭数学！\n你的支持让更多马来西亚独中生能免费练习数学。',
     newBalance:     '新余额：{b} Token',
-    limitTitle:     '今日观看次数已满（{n}/{max}）',
-    limitMsg:       '你今天已经观看了 {max} 次广告，明天再来吧！',
+    limitTitle:     '今日已签到',
+    limitMsg:       '你今天已经签到过了，明天再来吧！',
     returnBtn:      '← 返回继续练习',
     errInvalid:     '❌ 无效的登入状态，请重新登入后再试。',
-    errLimit:       '❌ 今日广告奖励已达上限。',
+    errLimit:       '❌ 今日签到奖励已领取。',
     errNetwork:     '❌ 网络错误，请稍后重试。',
   },
   en: {
-    logoSub:        'Watch an ad to earn practice Tokens',
-    adPlaceholder:  'Ad Area',
-    adSub:          'A real ad will appear here after AdSense approval.\nThank you for supporting DuckMath! 🦆',
-    progressLabel:  'Watch progress',
-    waitMsg:        'Please wait — earn +{n} tokens after watching…',
+    logoSub:        'Daily check-in for practice Tokens',
+    checkinText:    'Daily Check-in',
+    checkinSub:     'Check in once a day to claim — no ads to watch.\nThank you for supporting DuckMath! 🦆',
+    loadingMsg:     'Checking status…',
     claimReady:     '🎁 Claim +{n} Tokens!',
-    waiting:        '⏳ Waiting for ad to finish…',
+    loading:        '⏳ Loading…',
     closeBtn:       '✖ Not now',
     successTitle:   '+{n} Tokens Claimed!',
-    successMsg:     'Thank you for watching and supporting DuckMath!\nYour support keeps the platform free for Malaysian students.',
+    successMsg:     'Thank you for checking in and supporting DuckMath!\nYour support keeps the platform free for Malaysian students.',
     newBalance:     'New balance: {b} Tokens',
-    limitTitle:     'Daily limit reached ({n}/{max})',
-    limitMsg:       "You've watched {max} ads today. Come back tomorrow!",
+    limitTitle:     'Already checked in today',
+    limitMsg:       "You've already checked in today. Come back tomorrow!",
     returnBtn:      '← Back to Practice',
     errInvalid:     '❌ Invalid session. Please log in again.',
-    errLimit:       '❌ Daily ad reward limit reached.',
+    errLimit:       '❌ Daily check-in reward already claimed.',
     errNetwork:     '❌ Network error. Please try again later.',
   },
 };
@@ -244,17 +212,16 @@ function tx(key, vars = {}) {
 }
 
 // ══ Apply language ════════════════════════════════════════════════════════════
-document.getElementById('logoSub').textContent        = T.logoSub;
-document.getElementById('adPlaceholderText').textContent = T.adPlaceholder;
-document.getElementById('adPlaceholderSub').innerHTML = T.adSub.replace('\n','<br/>');
-document.getElementById('progressLabel').textContent  = T.progressLabel;
-document.getElementById('statusMsg').textContent      = tx('waitMsg', {n: TOKENS_PER_AD});
-document.getElementById('claimBtn').textContent       = T.waiting;
-document.getElementById('closeBtn').textContent       = T.closeBtn;
-document.getElementById('successMsg').innerHTML       = T.successMsg.replace('\n','<br/>');
-document.getElementById('successTitle').textContent   = tx('successTitle', {n: TOKENS_PER_AD});
-document.getElementById('limitTitle').textContent     = tx('limitTitle', {n: '?', max: AD_DAILY_LIMIT});
-document.getElementById('limitMsg').innerHTML         = tx('limitMsg', {max: AD_DAILY_LIMIT}).replace('\n','<br/>');
+document.getElementById('logoSub').textContent    = T.logoSub;
+document.getElementById('checkinText').textContent = T.checkinText;
+document.getElementById('checkinSub').innerHTML   = T.checkinSub.replace('\n','<br/>');
+document.getElementById('statusMsg').textContent  = T.loadingMsg;
+document.getElementById('claimBtn').textContent   = T.loading;
+document.getElementById('closeBtn').textContent   = T.closeBtn;
+document.getElementById('successMsg').innerHTML   = T.successMsg.replace('\n','<br/>');
+document.getElementById('successTitle').textContent = tx('successTitle', {n: TOKENS_PER_CHECKIN});
+document.getElementById('limitTitle').textContent = T.limitTitle;
+document.getElementById('limitMsg').innerHTML     = T.limitMsg.replace('\n','<br/>');
 document.documentElement.lang = LANG;
 
 // ══ Supabase helpers ══════════════════════════════════════════════════════════
@@ -284,9 +251,7 @@ async function updateProfile(patch) {
 }
 
 // ══ State ════════════════════════════════════════════════════════════════════
-let secondsLeft = AD_DURATION_SEC;
-let canClaim    = false;
-let claiming    = false;
+let claiming = false;
 
 function showError(msg) {
   const el = document.getElementById('errorMsg');
@@ -300,11 +265,14 @@ function closeOrReturn() {
   setTimeout(() => { window.location.href = RETURN_URL; }, 400);
 }
 
-// ══ Validate session + check daily limit ════════════════════════════════════
+// ══ Validate session + check daily limit, then enable claim immediately ══════
+// (2026-08-28 合规修法:去掉了原来的15秒倒计时/观看进度——不再要求"看完广告"
+// 才能领,校验完当天没领过就直接可以点。)
 async function init() {
   if (!AT || !UID) {
     showError(T.errInvalid);
     document.getElementById('claimBtn').disabled = true;
+    document.getElementById('statusMsg').textContent = '';
     return;
   }
   try {
@@ -312,55 +280,29 @@ async function init() {
     if (!profile) { showError(T.errInvalid); return; }
 
     const today = new Date().toISOString().slice(0, 10);
-    const viewsDate  = profile.ad_views_date  || '';
-    const viewsToday = viewsDate === today ? (profile.ad_views_today || 0) : 0;
+    const checkinDate  = profile.ad_views_date  || '';
+    const checkedInToday = checkinDate === today ? (profile.ad_views_today || 0) : 0;
 
-    if (viewsToday >= AD_DAILY_LIMIT) {
-      // Show limit card
+    if (checkedInToday >= CHECKIN_DAILY_LIMIT) {
+      // Already checked in today
       document.getElementById('mainCard').style.display = 'none';
       document.getElementById('limitCard').style.display = 'block';
-      document.getElementById('limitTitle').textContent =
-        tx('limitTitle', {n: viewsToday, max: AD_DAILY_LIMIT});
       return;
     }
 
-    // All good — start countdown
-    startCountdown();
+    // Not checked in yet today — enable claim immediately, no wait.
+    document.getElementById('statusMsg').textContent = '';
+    const claimBtn = document.getElementById('claimBtn');
+    claimBtn.disabled = false;
+    claimBtn.textContent = tx('claimReady', {n: TOKENS_PER_CHECKIN});
   } catch (e) {
     showError(T.errNetwork);
   }
 }
 
-// ══ Countdown timer ═══════════════════════════════════════════════════════════
-function startCountdown() {
-  const timerEl    = document.getElementById('timerDisplay');
-  const fillEl     = document.getElementById('progressFill');
-  const pctEl      = document.getElementById('progressPct');
-  const claimBtn   = document.getElementById('claimBtn');
-  const statusMsg  = document.getElementById('statusMsg');
-
-  const interval = setInterval(() => {
-    secondsLeft--;
-    const pct = Math.round(((AD_DURATION_SEC - secondsLeft) / AD_DURATION_SEC) * 100);
-    timerEl.textContent   = secondsLeft > 0 ? secondsLeft : '✅';
-    fillEl.style.width    = pct + '%';
-    pctEl.textContent     = pct + '%';
-
-    if (secondsLeft <= 0) {
-      clearInterval(interval);
-      canClaim = true;
-      claimBtn.disabled     = false;
-      claimBtn.textContent  = tx('claimReady', {n: TOKENS_PER_AD});
-      statusMsg.textContent = LANG === 'zh'
-        ? '广告已看完！点击下方按钮领取你的 Token 🎁'
-        : 'Ad finished! Click below to claim your Tokens 🎁';
-    }
-  }, 1000);
-}
-
 // ══ Claim tokens ══════════════════════════════════════════════════════════════
 async function claimTokens() {
-  if (!canClaim || claiming) return;
+  if (claiming) return;
   claiming = true;
 
   const claimBtn = document.getElementById('claimBtn');
@@ -373,21 +315,21 @@ async function claimTokens() {
     if (!profile) { showError(T.errInvalid); claiming = false; return; }
 
     const today = new Date().toISOString().slice(0, 10);
-    const viewsDate  = profile.ad_views_date  || '';
-    const viewsToday = viewsDate === today ? (profile.ad_views_today || 0) : 0;
+    const checkinDate  = profile.ad_views_date  || '';
+    const checkedInToday = checkinDate === today ? (profile.ad_views_today || 0) : 0;
 
-    if (viewsToday >= AD_DAILY_LIMIT) {
+    if (checkedInToday >= CHECKIN_DAILY_LIMIT) {
       showError(T.errLimit);
       claiming = false;
       return;
     }
 
-    const newTokens = (profile.tokens_daily || 0) + TOKENS_PER_AD;
-    const newViews  = viewsToday + 1;
+    const newTokens = (profile.tokens_daily || 0) + TOKENS_PER_CHECKIN;
+    const newCheckins = checkedInToday + 1;
 
     await updateProfile({
       tokens_daily:   newTokens,
-      ad_views_today: newViews,
+      ad_views_today: newCheckins,
       ad_views_date:  today,
     });
 
@@ -396,13 +338,13 @@ async function claimTokens() {
     document.getElementById('successCard').style.display = 'block';
     const total = newTokens + (profile.tokens_purchased || 0);
     document.getElementById('newBalance').textContent = tx('newBalance', {b: total});
-    document.getElementById('successTitle').textContent  = tx('successTitle', {n: TOKENS_PER_AD});
+    document.getElementById('successTitle').textContent  = tx('successTitle', {n: TOKENS_PER_CHECKIN});
     document.querySelector('#successCard .btn-claim').textContent = T.returnBtn;
 
   } catch (e) {
     showError(T.errNetwork);
     claimBtn.disabled    = false;
-    claimBtn.textContent = tx('claimReady', {n: TOKENS_PER_AD});
+    claimBtn.textContent = tx('claimReady', {n: TOKENS_PER_CHECKIN});
     claiming = false;
   }
 }
