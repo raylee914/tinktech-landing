@@ -2,87 +2,104 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.tinktech.com.my/</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.tinktech.com.my/about.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <priority>0.8</priority>
+    <loc>https://www.tinktech.com.my/about</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.tinktech.com.my/blog</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.tinktech.com.my/blog/1</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.tinktech.com.my/blog/2</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.tinktech.com.my/blog/3</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/wiki.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.tinktech.com.my/blog/index.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.tinktech.com.my/blog/ai-math-education.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.tinktech.com.my/blog/effective-math-study.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.tinktech.com.my/blog/spm-math-guide.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/questions/index.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/questions/sc04-matrices-0ab45c6f.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/questions/sc04-matrices-5642285b.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/questions/sc04-matrices-9df29560.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/questions/sc04-matrices-b885efa3.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/questions/sc06-matrices-bcd19e6f.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/questions/sc07-calculus-inflection-points-1ae3b85e.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/questions/sc07-calculus-volume-of-revolution-5def7d89.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://www.tinktech.com.my/privacy.html</loc>
-    <lastmod>2026-08-28</lastmod>
+    <loc>https://www.tinktech.com.my/privacy</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.tinktech.com.my/terms.html</loc>
-    <lastmod>2026-08-28</lastmod>
+    <loc>https://www.tinktech.com.my/terms</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 </urlset>
