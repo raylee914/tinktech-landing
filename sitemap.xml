@@ -37,16 +37,16 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.tinktech.com.my/wiki.html</loc>
+    <loc>https://www.tinktech.com.my/wiki/</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.tinktech.com.my/questions/index.html</loc>
+    <loc>https://www.tinktech.com.my/questions/</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/questions/sc04-matrices-0ab45c6f.html</loc>
