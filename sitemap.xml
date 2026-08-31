@@ -7,31 +7,31 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.tinktech.com.my/about</loc>
+    <loc>https://www.tinktech.com.my/about/</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.tinktech.com.my/blog</loc>
+    <loc>https://www.tinktech.com.my/blog/</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.tinktech.com.my/blog/1</loc>
+    <loc>https://www.tinktech.com.my/blog/exam-topic-weightage/</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.tinktech.com.my/blog/2</loc>
+    <loc>https://www.tinktech.com.my/blog/spaced-repetition/</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.tinktech.com.my/blog/3</loc>
+    <loc>https://www.tinktech.com.my/blog/ai-grading-accuracy-test/</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -91,13 +91,13 @@
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://www.tinktech.com.my/privacy</loc>
+    <loc>https://www.tinktech.com.my/privacy/</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.tinktech.com.my/terms</loc>
+    <loc>https://www.tinktech.com.my/terms/</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
