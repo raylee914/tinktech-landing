@@ -1,61 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.tinktech.com.my/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/"/>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.tinktech.com.my/en/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/"/>
     <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/about/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/about/"/>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.tinktech.com.my/en/about/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/about/"/>
     <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/blog/"/>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.tinktech.com.my/en/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/blog/"/>
     <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/blog/exam-topic-weightage/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/blog/exam-topic-weightage/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/blog/exam-topic-weightage/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/blog/exam-topic-weightage/"/>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.tinktech.com.my/en/blog/exam-topic-weightage/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/blog/exam-topic-weightage/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/blog/exam-topic-weightage/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/blog/exam-topic-weightage/"/>
     <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/blog/spaced-repetition/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/blog/spaced-repetition/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/blog/spaced-repetition/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/blog/spaced-repetition/"/>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.tinktech.com.my/en/blog/spaced-repetition/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/blog/spaced-repetition/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/blog/spaced-repetition/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/blog/spaced-repetition/"/>
     <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/blog/ai-grading-accuracy-test/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/blog/ai-grading-accuracy-test/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/blog/ai-grading-accuracy-test/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/blog/ai-grading-accuracy-test/"/>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.tinktech.com.my/en/blog/ai-grading-accuracy-test/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/blog/ai-grading-accuracy-test/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/blog/ai-grading-accuracy-test/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/blog/ai-grading-accuracy-test/"/>
     <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/wiki/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/wiki/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/wiki/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/wiki/"/>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.tinktech.com.my/en/wiki/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/wiki/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/wiki/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/wiki/"/>
     <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/questions/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/questions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/questions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/questions/"/>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.tinktech.com.my/en/questions/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/questions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/questions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/questions/"/>
     <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/privacy/"/>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.tinktech.com.my/en/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/privacy/"/>
     <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.tinktech.com.my/terms/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/terms/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/terms/"/>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.tinktech.com.my/en/terms/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.tinktech.com.my/terms/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.tinktech.com.my/en/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.tinktech.com.my/terms/"/>
     <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
